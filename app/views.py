@@ -5,7 +5,6 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 from django.contrib import messages
 
-
 from app.models import *
 
 # Create your views here.
@@ -46,12 +45,16 @@ def bookSession(request):
 
     BookSession(name=name,email=email,number=number,pincode=pincode,address=address,designer=Designer.objects.first()).save()
     print("Session Booked Successfully!")
-    # id=BookSession.objects.latest('id').id
-    # subject = 'Your Session Booked With Us !!!'
-    # message = f'Hi {name}, thank you for booking session with us.\n Here is your booking id : {id} '
-    # email_from = settings.EMAIL_HOST_USER
-    # recipient_list = [email, ]
-    # send_mail( subject, message, email_from, recipient_list )
+    email = EmailMessage(
+    subject='Your Session Booked With Us!!!',
+    body='Hi '+name+'\nThank you for booking session with us. \n Here is your booked session ID:'+str(BookSession.objects.latest('id').id),
+    from_email=settings.EMAIL_HOST_USER,
+    to=[email],
+    headers={'Content-Type': 'text/plain'},
+    )
+    email.send()
+    print("Booking details email successfully!")
+
     return redirect('homepage')
     
 
@@ -85,7 +88,10 @@ def bookDesign(request,pk):
 
 
 def adminPage(request):
-    return render(request,"admin/index.html")
+    sessionBookedCount=len(BookSession.objects.all())
+    bookedDesignCount=len(BookDesign.objects.all())
+    context={"sessionCount":sessionBookedCount,"designBookedCount":bookedDesignCount}
+    return render(request,"adminArea/index.html",context)
 
 
 def updateAbout(request):
@@ -99,8 +105,65 @@ def updateAbout(request):
         abt.footer_meta_content=meta_about
         abt.save()
         return redirect("adminArea")
-    return render(request,"admin/updateAbout.html",context={"abt":abt})
+    return render(request,"adminAreaS/updateAbout.html",context={"abt":abt})
+
+def updateWhyAestheticsk(request):
+    if(request.method == "POST"):
+        name=request.POST['name']
+        iconUrl=request.POST['iconUrl']
+        WhyAesthetics(name=name,iconUrl=iconUrl).save()
+        return redirect("adminArea")
+    return render(request,"adminArea/updateWhyAesth.html")
 
 
+def updateSpecialized(request):
+    if(request.method == "POST"):
+        name=request.POST['name']
+        imgUrl=request.POST['imgUrl']
+        Specialized(name=name,imgUrl=imgUrl).save()
+        print("saved")
+        return redirect("adminArea")
+    return render(request,"adminArea/updateSpecialized.html")
 
+def updateService(request):
+    if(request.method == "POST"):
+        name=request.POST['name']
+        iconUrl=request.POST['iconUrl']
+        Service(name=name,iconUrl=iconUrl).save()
+        return redirect("adminArea")
+    return render(request,"adminArea/updateService.html")
+def updateContact(request):
+    contactDetails= Contact.objects.first()
+    if(request.method == "POST"):
+        address=request.POST['address']
+        email=request.POST['email']
+        contact=request.POST['contact']
+        contactDetails.office_address=address
+        contactDetails.office_email=email
+        contactDetails.office_contact=contact
+        contactDetails.save()
+        messages.success(request, 'Contact Details Updated Successfully!')
+        return redirect("adminArea")
+    return render(request,"adminArea/updateContact.html",context={"contactDetails":contactDetails})
+
+def updateDesigner(request):
+    designer= Designer.objects.first()
+    if(request.method == "POST"):
+        name=request.POST['name']
+        bio=request.POST['bio']
+        linkedin=request.POST['linkedin']
+        facebook=request.POST['facebook']
+        twitter=request.POST['twitter']
+        instagram=request.POST['instagram']
+        youtube=request.POST['youtube']
+        designer.name=name
+        designer.bio=bio
+        designer.linkedin=linkedin
+        designer.facebook=facebook
+        designer.instagram=instagram
+        designer.twitter=twitter
+        designer.youtube=youtube
+        designer.save()
+        return redirect("adminArea")
+    return render(request,"adminArea/updateDesigner.html",context={"designer":designer})
 

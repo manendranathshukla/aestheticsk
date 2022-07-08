@@ -37,7 +37,7 @@
 </head>
 
 <body>
-  
+
 
 
 
@@ -114,8 +114,10 @@
                     {% csrf_token %}
                     <input type="text" name="name" placeholder="Enter your name">
                     <input type="email" name="email" placeholder="Enter your email">
-                    <input type="number" name="number" placeholder="Enter your mobile number" pattern="[0-9]+" maxlength="10" required>
-                    <input type="number" name="pincode" placeholder="Enter your current pincode"   pattern="[0-9]+" maxlength="6" required>
+                    <input type="number" name="number" placeholder="Enter your mobile number" pattern="[0-9]+"
+                        maxlength="10" required>
+                    <input type="number" name="pincode" placeholder="Enter your current pincode" pattern="[0-9]+"
+                        maxlength="6" required>
                     <input type="textarea" name="address" placeholder="Enter your address">
                     <button type="submit">Book Your Design Session</button>
                 </form>
@@ -129,15 +131,17 @@
             <form action="bookSession/" method="post">
                 {% csrf_token %}
                 <input type="text" name="name" placeholder="Enter your name">
-                    <input type="email" name="email" placeholder="Enter your email">
-                    <input type="number" name="number" placeholder="Enter your mobile number" pattern="[0-9]+" maxlength="10" required>
-                    <input type="number" name="pincode" placeholder="Enter your current pincode"   pattern="[0-9]+" maxlength="6" required>
-                    <input type="textarea" name="address" placeholder="Enter your address">
+                <input type="email" name="email" placeholder="Enter your email">
+                <input type="number" name="number" placeholder="Enter your mobile number" pattern="[0-9]+"
+                    maxlength="10" required>
+                <input type="number" name="pincode" placeholder="Enter your current pincode" pattern="[0-9]+"
+                    maxlength="6" required>
+                <input type="textarea" name="address" placeholder="Enter your address">
                 <button type="submit">Book Your Design Session</button>
             </form>
         </div>
     </div>
-  
+
 
 
 
@@ -176,7 +180,7 @@
 
 
 
-   
+
     <div class="whyAesthetics">
         <h1>Why choose us ?</h1>
         <div class="aestheticsPoints">
@@ -185,7 +189,7 @@
                 <img src="{{whasth.iconUrl}}" />
                 <label>{{whasth.name}}</label>
             </li>
-           {% endfor %}
+            {% endfor %}
 
         </div>
     </div>
@@ -232,56 +236,23 @@
             {% for r in rooms %}
             <div class="box">
                 <a href="rooms/{{r.id}}">
-                    <img
-                        src="{{r.thumbnailImgUrl}}" /></a>
+                    <img src="{{r.thumbnailImgUrl}}" /></a>
                 <label>{{r.name}}</label>
             </div>
             {% endfor %}
-           
+
         </div>
     </div>
     <div class="dealsIn">
         <h1>We are specialized in</h1>
         <div class="specializations">
+            {% for s in specialization %}
             <li class="eachSpecialization">
-                <img src="https://www.woodenstreet.com/images/furniture/deal-1.jpg?v1">
-                <label>Furniture Works</label>
+                <img src="{{s.imgUrl}}">
+                <label>{{s.name}}</label>
             </li>
-            <li class="eachSpecialization">
-                <img
-                    src="https://happho.com/wp-content/uploads/2021/04/A-simple-and-an-elegant-false-ceiling-design-in-living-room.jpg">
-                <label>False Ceiling</label>
-            </li>
-            <li class="eachSpecialization">
-                <img
-                    src="https://images.livspace-cdn.com/plain/https://jumanji.livspace-cdn.com/magazine/wp-content/uploads/2016/06/27163604/wall-panels-for-Indian-homes.jpg">
-                <label>Designer and Decorative Panel</label>
-            </li>
-            <li class="eachSpecialization">
-                <img
-                    src="http://www.contemporist.com/wp-content/uploads/2020/04/unqiue-wood-floor-wide-plank-230420-1100-01.jpg">
-                <label>Wooden Flooring</label>
-            </li>
-            <li class="eachSpecialization">
-                <img
-                    src="https://cdn2.thebridalbox.com/wp-content/uploads/2016/01/The-Light-Arches-wedding-decoration.jpg">
-                <label>Decoration Lights</label>
-            </li>
+            {% endfor %}
 
-
-            <li class="eachSpecialization">
-                <img src="https://www.wallpaperboulevard.com/image/2021LivingRoomWallpaperIdeas3.jpg">
-                <label>Exclusive Designer Wallpapers</label>
-            </li>
-            <li class="eachSpecialization">
-                <img src="https://mohanjodero.com/wp-content/uploads/2020/10/background-2-49-768x512.jpg">
-                <label>Wall Art Craft</label>
-            </li>
-
-            <li class="eachSpecialization">
-                <img src="https://www.blindsdirect.co.za/wp-content/uploads/2015/06/Double-Roller3.jpg">
-                <label>Roller and Zebra Blinds</label>
-            </li>
         </div>
     </div>
     <div class="completeHomeInterior">
@@ -561,56 +532,56 @@
                 </div>
             </div>
             {% endfor %}
-   
-        </div>
-    </div>
-
-    </body>
-    <div class="addressMap">
-        <div class="map">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.8521632333877!2d85.26772785051705!3d23.35736998470988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4dfd521948151%3A0x761e0bc793e8337f!2sShri%20Sai%20Ashray%20Apartment!5e0!3m2!1sen!2sin!4v1654102214702!5m2!1sen!2sin"
-                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        <div class="headquarters">
-            <h1>Reach us</h1>
-            <h3>We are located across all cities in India</h3>
-            <i class="fa fa-building"></i><label>Main Office</label><br>
-            <span>{{contact.office_address}}</span>
-            <p></p>
-            <i class="fa fa-envelope"></i><label>Email</label><br>
-            <span>{{contact.office_email}}</span>
-            <p></p>
-            <label><i class="fa fa-phone"></i>Contact No.</label><br>
-            <span>{{contact.office_contact}}</span>
 
         </div>
     </div>
-    <div class="footer">
-        <div class="upper">
-            <img src="static/images/WhatsApp_Image_2022-05-31_at_3.00.57_PM-removebg-preview.png" />
-            <p>{{about.footer_content}}</p>
-        </div>
-        <div class="lower">
-            <span>{{about.footer_meta_content}}</span>
-            <div class="socialMedia">
-                <a href="#"><i class="fa fa-facebook-square"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-youtube"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-            </div>
-            <div class="contact">
-                <a href="#"><i class="fa fa-phone"></i>{{contact.office_email}}</a>
-                <a href="#"><i class="fa fa-envelope"></i>{{contact.office_contact}}</a>
 
-            </div>
+</body>
+<div class="addressMap">
+    <div class="map">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.8521632333877!2d85.26772785051705!3d23.35736998470988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4dfd521948151%3A0x761e0bc793e8337f!2sShri%20Sai%20Ashray%20Apartment!5e0!3m2!1sen!2sin!4v1654102214702!5m2!1sen!2sin"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="headquarters">
+        <h1>Reach us</h1>
+        <h3>We are located across all cities in India</h3>
+        <i class="fa fa-building"></i><label>Main Office</label><br>
+        <span>{{contact.office_address}}</span>
+        <p></p>
+        <i class="fa fa-envelope"></i><label>Email</label><br>
+        <span>{{contact.office_email}}</span>
+        <p></p>
+        <label><i class="fa fa-phone"></i>Contact No.</label><br>
+        <span>{{contact.office_contact}}</span>
+
+    </div>
+</div>
+<div class="footer">
+    <div class="upper">
+        <img src="static/images/WhatsApp_Image_2022-05-31_at_3.00.57_PM-removebg-preview.png" />
+        <p>{{about.footer_content}}</p>
+    </div>
+    <div class="lower">
+        <span>{{about.footer_meta_content}}</span>
+        <div class="socialMedia">
+            <a href="#"><i class="fa fa-facebook-square"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-youtube"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+        </div>
+        <div class="contact">
+            <a href="#"><i class="fa fa-phone"></i>{{contact.office_email}}</a>
+            <a href="#"><i class="fa fa-envelope"></i>{{contact.office_contact}}</a>
+
         </div>
     </div>
-    <div class="stamp">
-        <span>Website designed & developed by Rishu Raj</span>
-    </div>
+</div>
+<div class="stamp">
+    <span>Website designed & developed by Rishu Raj</span>
+</div>
 </body>
 
 </html>

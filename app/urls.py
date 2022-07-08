@@ -9,4 +9,9 @@ urlpatterns = [
     path('bookDesign/<int:pk>',bookDesign),
     path('aesthetic/adminArea/',adminPage,name="adminArea"),
     path('aesthetic/updateAbout/',updateAbout),
+    path('aesthetic/updateWhyAestheticsk/',updateWhyAestheticsk),
+    path('aesthetic/updateSpecialized/',updateSpecialized),
+    path('aesthetic/updateService/',updateService),
+    path('aesthetic/updateContact/',updateContact),
+    path('aesthetic/updateDesigner/',updateDesigner),
 ]
