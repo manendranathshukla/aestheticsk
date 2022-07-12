@@ -14,4 +14,10 @@ urlpatterns = [
     path('aesthetic/updateService/',updateService),
     path('aesthetic/updateContact/',updateContact),
     path('aesthetic/updateDesigner/',updateDesigner),
+    path('aesthetic/viewBookedSessions/',viewBookedSessions),
+    path('aesthetic/viewBookedDesigns/',viewBookedDesigns),
+    path('aesthetic/viewRooms/',viewRooms),
+    path('aesthetic/addRoom/',addRoom),
+    path('aesthetic/delRoom/<int:pk>',delRoom),
+
 ]

@@ -44,7 +44,7 @@ def bookSession(request):
     address=request.POST['address']
 
     BookSession(name=name,email=email,number=number,pincode=pincode,address=address,designer=Designer.objects.first()).save()
-    print("Session Booked Successfully!")
+    messages.success(request, 'Session Booked Successfully!')
     email = EmailMessage(
     subject='Your Session Booked With Us!!!',
     body='Hi '+name+'\nThank you for booking session with us. \n Here is your booked session ID:'+str(BookSession.objects.latest('id').id),
@@ -52,7 +52,9 @@ def bookSession(request):
     to=[email],
     headers={'Content-Type': 'text/plain'},
     )
-    email.send()
+    isSent=email.send()
+    if(isSent != 1):
+        messages.error(request, 'Email Not Sent!')
     print("Booking details email successfully!")
 
     return redirect('homepage')
@@ -104,14 +106,16 @@ def updateAbout(request):
         abt.footer_content=footer_about
         abt.footer_meta_content=meta_about
         abt.save()
+        messages.success(request, 'Saved')
         return redirect("adminArea")
-    return render(request,"adminAreaS/updateAbout.html",context={"abt":abt})
+    return render(request,"adminArea/updateAbout.html",context={"abt":abt})
 
 def updateWhyAestheticsk(request):
     if(request.method == "POST"):
         name=request.POST['name']
         iconUrl=request.POST['iconUrl']
         WhyAesthetics(name=name,iconUrl=iconUrl).save()
+        messages.success(request, 'Saved')
         return redirect("adminArea")
     return render(request,"adminArea/updateWhyAesth.html")
 
@@ -122,6 +126,7 @@ def updateSpecialized(request):
         imgUrl=request.POST['imgUrl']
         Specialized(name=name,imgUrl=imgUrl).save()
         print("saved")
+        messages.success(request, 'Saved')
         return redirect("adminArea")
     return render(request,"adminArea/updateSpecialized.html")
 
@@ -130,6 +135,7 @@ def updateService(request):
         name=request.POST['name']
         iconUrl=request.POST['iconUrl']
         Service(name=name,iconUrl=iconUrl).save()
+        messages.success(request, 'Saved')
         return redirect("adminArea")
     return render(request,"adminArea/updateService.html")
 def updateContact(request):
@@ -142,6 +148,7 @@ def updateContact(request):
         contactDetails.office_email=email
         contactDetails.office_contact=contact
         contactDetails.save()
+      
         messages.success(request, 'Contact Details Updated Successfully!')
         return redirect("adminArea")
     return render(request,"adminArea/updateContact.html",context={"contactDetails":contactDetails})
@@ -164,6 +171,45 @@ def updateDesigner(request):
         designer.twitter=twitter
         designer.youtube=youtube
         designer.save()
+        messages.success(request, 'Saved')
         return redirect("adminArea")
     return render(request,"adminArea/updateDesigner.html",context={"designer":designer})
+
+def viewBookedSessions(request):
+    sessions=BookSession.objects.all()
+    context={"sessions":sessions}
+    return render(request,"adminArea/bookedSession.html",context=context)
+
+
+def viewBookedDesigns(request):
+    designs=BookDesign.objects.all()
+    context={"designs":designs}
+    return render(request,"adminArea/bookedDesign.html",context=context)
+
+def viewRooms(request):
+    rooms=Room.objects.all()
+    context={"rooms":rooms}
+    return render(request,"adminArea/rooms.html",context=context)
+
+def addRoom(request):
+    designers=Designer.objects.all()
+    context={"designers":designers}
+    if(request.method == "POST"):
+        name=request.POST['name']
+        mainDivBackImageUrl=request.POST['maindivbg']
+        designerid=request.POST['designer']
+        thumbnailImgUrl=request.POST['thumbnail']
+        Room(name=name,mainDivBackImageUrl=mainDivBackImageUrl,designedBy=Designer.objects.filter(id=designerid)[0],thumbnailImgUrl=thumbnailImgUrl).save()
+      
+        messages.success(request, 'New Room Added Successfully!')
+        return redirect("adminArea")
+    return render(request,"adminArea/addRoom.html",context)
+
+
+def delRoom(request,pk):
+    pk=Room.objects.filter(id=pk)[0]
+    pk.delete()
+    messages.success(request, 'Room Deleted Successfully!')
+    return redirect("adminArea")
+
 

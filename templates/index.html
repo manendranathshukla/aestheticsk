@@ -34,6 +34,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="static/css/responsive.css">
     <link rel="stylesheet" href="static/css/smallMobileResponsive.css">
+     <!-- CSS -->
+     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+     <!-- Default theme -->
+     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
+     <!-- Custom styles for this template-->
 </head>
 
 <body>
@@ -536,52 +541,61 @@
         </div>
     </div>
 
-</body>
-<div class="addressMap">
-    <div class="map">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.8521632333877!2d85.26772785051705!3d23.35736998470988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4dfd521948151%3A0x761e0bc793e8337f!2sShri%20Sai%20Ashray%20Apartment!5e0!3m2!1sen!2sin!4v1654102214702!5m2!1sen!2sin"
-            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-    <div class="headquarters">
-        <h1>Reach us</h1>
-        <h3>We are located across all cities in India</h3>
-        <i class="fa fa-building"></i><label>Main Office</label><br>
-        <span>{{contact.office_address}}</span>
-        <p></p>
-        <i class="fa fa-envelope"></i><label>Email</label><br>
-        <span>{{contact.office_email}}</span>
-        <p></p>
-        <label><i class="fa fa-phone"></i>Contact No.</label><br>
-        <span>{{contact.office_contact}}</span>
-
-    </div>
-</div>
-<div class="footer">
-    <div class="upper">
-        <img src="static/images/WhatsApp_Image_2022-05-31_at_3.00.57_PM-removebg-preview.png" />
-        <p>{{about.footer_content}}</p>
-    </div>
-    <div class="lower">
-        <span>{{about.footer_meta_content}}</span>
-        <div class="socialMedia">
-            <a href="#"><i class="fa fa-facebook-square"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-youtube"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa-instagram"></i></a>
+    <div class="addressMap">
+        <div class="map">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.8521632333877!2d85.26772785051705!3d23.35736998470988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4dfd521948151%3A0x761e0bc793e8337f!2sShri%20Sai%20Ashray%20Apartment!5e0!3m2!1sen!2sin!4v1654102214702!5m2!1sen!2sin"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-        <div class="contact">
-            <a href="#"><i class="fa fa-phone"></i>{{contact.office_email}}</a>
-            <a href="#"><i class="fa fa-envelope"></i>{{contact.office_contact}}</a>
+        <div class="headquarters">
+            <h1>Reach us</h1>
+            <h3>We are located across all cities in India</h3>
+            <i class="fa fa-building"></i><label>Main Office</label><br>
+            <span>{{contact.office_address}}</span>
+            <p></p>
+            <i class="fa fa-envelope"></i><label>Email</label><br>
+            <span>{{contact.office_email}}</span>
+            <p></p>
+            <label><i class="fa fa-phone"></i>Contact No.</label><br>
+            <span>{{contact.office_contact}}</span>
 
         </div>
     </div>
-</div>
-<div class="stamp">
-    <span>Website designed & developed by Rishu Raj</span>
-</div>
+    <div class="footer">
+        <div class="upper">
+            <img src="static/images/WhatsApp_Image_2022-05-31_at_3.00.57_PM-removebg-preview.png" />
+            <p>{{about.footer_content}}</p>
+        </div>
+        <div class="lower">
+            <span>{{about.footer_meta_content}}</span>
+            <div class="socialMedia">
+                <a href="#"><i class="fa fa-facebook-square"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-youtube"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+            </div>
+            <div class="contact">
+                <a href="#"><i class="fa fa-phone"></i>{{contact.office_email}}</a>
+                <a href="#"><i class="fa fa-envelope"></i>{{contact.office_contact}}</a>
+
+            </div>
+        </div>
+    </div>
+    <div class="stamp">
+        <span>Website designed & developed by Rishu Raj</span>
+    </div>
+
+
+    <!-- Alertify JavaScript -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script>
+        {% for msg in messages %}
+        alertify.set('notifier', 'position', 'top-right');
+        alertify.success('{{msg}}');
+        {% endfor %}
+    </script>
 </body>
 
 </html>
