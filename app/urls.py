@@ -4,6 +4,8 @@ from app.views import *
 
 urlpatterns = [
     path('', home,name='homepage'),
+    path('aesthetic/login/',loginPage,name='login'),
+    path('aesthetic/register/',registerPage,name='signup'),
     path('rooms/<int:pk>',room,name='room'),
     path('bookSession/',bookSession),
     path('bookDesign/<int:pk>',bookDesign),
@@ -19,5 +21,6 @@ urlpatterns = [
     path('aesthetic/viewRooms/',viewRooms),
     path('aesthetic/addRoom/',addRoom),
     path('aesthetic/delRoom/<int:pk>',delRoom),
+
 
 ]
