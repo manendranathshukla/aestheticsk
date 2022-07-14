@@ -4,11 +4,12 @@ from app.views import *
 
 urlpatterns = [
     path('', home,name='homepage'),
-    path('aesthetic/login/',loginPage,name='login'),
-    path('aesthetic/register/',registerPage,name='signup'),
     path('rooms/<int:pk>',room,name='room'),
     path('bookSession/',bookSession),
     path('bookDesign/<int:pk>',bookDesign),
+    path('aesthetic/login/',loginPage,name='login'),
+    path('aesthetic/register/',registerPage,name='signup'),
+    path('aesthetic/logout/',Logout,name='logout'),
     path('aesthetic/adminArea/',adminPage,name="adminArea"),
     path('aesthetic/updateAbout/',updateAbout),
     path('aesthetic/updateWhyAestheticsk/',updateWhyAestheticsk),
@@ -24,6 +25,8 @@ urlpatterns = [
     path('aesthetic/delRoom/<int:pk>',delRoom),
     path('aesthetic/delBookedDesign/<int:pk>',delBookedDesign),
     path('aesthetic/delBookedSession/<int:pk>',delBookedSession),
+    path('aesthetic/error',errorPage,name="error"),
+    
 
 
 ]

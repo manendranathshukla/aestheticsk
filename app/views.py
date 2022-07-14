@@ -5,7 +5,7 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 from django.contrib import messages
 from .forms import *
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
 from app.models import *
 
@@ -90,153 +90,216 @@ def bookDesign(request,pk):
 
 
 
-
+@login_required(login_url='/aesthetic/login')
 def adminPage(request):
-    sessionBookedCount=len(BookSession.objects.all())
-    bookedDesignCount=len(BookDesign.objects.all())
-    rooms=len(Room.objects.all())
-    designers=len(Designer.objects.all())
-    context={"sessionCount":sessionBookedCount,"designBookedCount":bookedDesignCount,"roomCount":rooms,"designersCount":designers}
-    return render(request,"adminArea/index.html",context)
+    if request.user.is_staff :
+        sessionBookedCount=len(BookSession.objects.all())
+        bookedDesignCount=len(BookDesign.objects.all())
+        rooms=len(Room.objects.all())
+        designers=len(Designer.objects.all())
+        context={"sessionCount":sessionBookedCount,"designBookedCount":bookedDesignCount,"roomCount":rooms,"designersCount":designers}
+        return render(request,"adminArea/index.html",context)
+    else:
+        return redirect('error')
 
-
+@login_required(login_url='/aesthetic/login')
 def updateAbout(request):
-    abt = About.objects.first()
-    if(request.method == "POST"):
-        about=request.POST['about']
-        footer_about=request.POST['footer_about']
-        meta_about=request.POST['meta_about']
-        abt.content=about
-        abt.footer_content=footer_about
-        abt.footer_meta_content=meta_about
-        abt.save()
-        messages.success(request, 'Saved')
-        return redirect("adminArea")
-    return render(request,"adminArea/updateAbout.html",context={"abt":abt})
+    if request.user.is_staff :
+        abt = About.objects.first()
+        if(request.method == "POST"):
+            about=request.POST['about']
+            footer_about=request.POST['footer_about']
+            meta_about=request.POST['meta_about']
+            abt.content=about
+            abt.footer_content=footer_about
+            abt.footer_meta_content=meta_about
+            abt.save()
+            messages.success(request, 'Saved')
+            return redirect("adminArea")
+        return render(request,"adminArea/updateAbout.html",context={"abt":abt})
+    else:
+        return redirect('error')
 
+@login_required(login_url='/aesthetic/login')
 def updateWhyAestheticsk(request):
-    if(request.method == "POST"):
-        name=request.POST['name']
-        iconUrl=request.POST['iconUrl']
-        WhyAesthetics(name=name,iconUrl=iconUrl).save()
-        messages.success(request, 'Saved')
-        return redirect("adminArea")
-    return render(request,"adminArea/updateWhyAesth.html")
+    if request.user.is_staff :
+        if(request.method == "POST"):
+            name=request.POST['name']
+            iconUrl=request.POST['iconUrl']
+            WhyAesthetics(name=name,iconUrl=iconUrl).save()
+            messages.success(request, 'Saved')
+            return redirect("adminArea")
+        return render(request,"adminArea/updateWhyAesth.html")
+    else:
+        return redirect('error')
 
-
+@login_required(login_url='/aesthetic/login')
 def updateSpecialized(request):
-    if(request.method == "POST"):
-        name=request.POST['name']
-        imgUrl=request.POST['imgUrl']
-        Specialized(name=name,imgUrl=imgUrl).save()
-        print("saved")
-        messages.success(request, 'Saved')
-        return redirect("adminArea")
-    return render(request,"adminArea/updateSpecialized.html")
-
+    if request.user.is_staff :
+        if(request.method == "POST"):
+            name=request.POST['name']
+            imgUrl=request.POST['imgUrl']
+            Specialized(name=name,imgUrl=imgUrl).save()
+            print("saved")
+            messages.success(request, 'Saved')
+            return redirect("adminArea")
+        return render(request,"adminArea/updateSpecialized.html")
+    else:
+        return redirect('error')
+@login_required(login_url='/aesthetic/login')
 def updateService(request):
-    if(request.method == "POST"):
-        name=request.POST['name']
-        iconUrl=request.POST['iconUrl']
-        Service(name=name,iconUrl=iconUrl).save()
-        messages.success(request, 'Saved')
-        return redirect("adminArea")
-    return render(request,"adminArea/updateService.html")
+    if request.user.is_staff :
+        if(request.method == "POST"):
+            name=request.POST['name']
+            iconUrl=request.POST['iconUrl']
+            Service(name=name,iconUrl=iconUrl).save()
+            messages.success(request, 'Saved')
+            return redirect("adminArea")
+        return render(request,"adminArea/updateService.html")
+    else:
+        return redirect('error')
+
+@login_required(login_url='/aesthetic/login')
 def updateContact(request):
-    contactDetails= Contact.objects.first()
-    if(request.method == "POST"):
-        address=request.POST['address']
-        email=request.POST['email']
-        contact=request.POST['contact']
-        contactDetails.office_address=address
-        contactDetails.office_email=email
-        contactDetails.office_contact=contact
-        contactDetails.save()
-      
-        messages.success(request, 'Contact Details Updated Successfully!')
-        return redirect("adminArea")
-    return render(request,"adminArea/updateContact.html",context={"contactDetails":contactDetails})
+    if request.user.is_staff :
+        contactDetails= Contact.objects.first()
+        if(request.method == "POST"):
+            address=request.POST['address']
+            email=request.POST['email']
+            contact=request.POST['contact']
+            contactDetails.office_address=address
+            contactDetails.office_email=email
+            contactDetails.office_contact=contact
+            contactDetails.save()
+        
+            messages.success(request, 'Contact Details Updated Successfully!')
+            return redirect("adminArea")
+        return render(request,"adminArea/updateContact.html",context={"contactDetails":contactDetails})
+    else:
+        return redirect('error')
 
+@login_required(login_url='/aesthetic/login')
 def updateDesigner(request):
-    designer= Designer.objects.first()
-    if(request.method == "POST"):
-        name=request.POST['name']
-        bio=request.POST['bio']
-        linkedin=request.POST['linkedin']
-        facebook=request.POST['facebook']
-        twitter=request.POST['twitter']
-        instagram=request.POST['instagram']
-        youtube=request.POST['youtube']
-        designer.name=name
-        designer.bio=bio
-        designer.linkedin=linkedin
-        designer.facebook=facebook
-        designer.instagram=instagram
-        designer.twitter=twitter
-        designer.youtube=youtube
-        designer.save()
-        messages.success(request, 'Saved')
-        return redirect("adminArea")
-    return render(request,"adminArea/updateDesigner.html",context={"designer":designer})
+    if request.user.is_staff :
+        designer= Designer.objects.first()
+        if(request.method == "POST"):
+            name=request.POST['name']
+            bio=request.POST['bio']
+            linkedin=request.POST['linkedin']
+            facebook=request.POST['facebook']
+            twitter=request.POST['twitter']
+            instagram=request.POST['instagram']
+            youtube=request.POST['youtube']
+            designer.name=name
+            designer.bio=bio
+            designer.linkedin=linkedin
+            designer.facebook=facebook
+            designer.instagram=instagram
+            designer.twitter=twitter
+            designer.youtube=youtube
+            designer.save()
+            messages.success(request, 'Saved')
+            return redirect("adminArea")
+        return render(request,"adminArea/updateDesigner.html",context={"designer":designer})
+    else:
+        return redirect('error')
 
+
+@login_required(login_url='/aesthetic/login')
 def viewBookedSessions(request):
-    sessions=BookSession.objects.all()
-    context={"sessions":sessions}
-    return render(request,"adminArea/bookedSession.html",context=context)
+    if request.user.is_staff :
+        sessions=BookSession.objects.all()
+        context={"sessions":sessions}
+        return render(request,"adminArea/bookedSession.html",context=context)
+    else:
+        return redirect('error')
 
-
+@login_required(login_url='/aesthetic/login')
 def viewBookedDesigns(request):
-    designs=BookDesign.objects.all()
-    context={"designs":designs}
-    return render(request,"adminArea/bookedDesign.html",context=context)
-
+    if request.user.is_staff :
+        designs=BookDesign.objects.all()
+        context={"designs":designs}
+        return render(request,"adminArea/bookedDesign.html",context=context)
+    else:
+        return redirect('error')
+@login_required(login_url='/aesthetic/login')
 def viewRooms(request):
-    rooms=Room.objects.all()
-    context={"rooms":rooms}
-    return render(request,"adminArea/rooms.html",context=context)
+    if request.user.is_staff :
+        rooms=Room.objects.all()
+        context={"rooms":rooms}
+        return render(request,"adminArea/rooms.html",context=context)
+    else:
+        return redirect('error')
 
+
+@login_required(login_url='/aesthetic/login')
 def addRoom(request):
-    designers=Designer.objects.all()
-    context={"designers":designers}
-    if(request.method == "POST"):
-        name=request.POST['name']
-        mainDivBackImageUrl=request.POST['maindivbg']
-        designerid=request.POST['designer']
-        thumbnailImgUrl=request.POST['thumbnail']
-        Room(name=name,mainDivBackImageUrl=mainDivBackImageUrl,designedBy=Designer.objects.filter(id=designerid)[0],thumbnailImgUrl=thumbnailImgUrl).save()
-      
-        messages.success(request, 'New Room Added Successfully!')
-        return redirect("adminArea")
-    return render(request,"adminArea/addRoom.html",context)
+    if request.user.is_staff :
+        designers=Designer.objects.all()
+        context={"designers":designers}
+        if(request.method == "POST"):
+            name=request.POST['name']
+            mainDivBackImageUrl=request.POST['maindivbg']
+            designerid=request.POST['designer']
+            thumbnailImgUrl=request.POST['thumbnail']
+            Room(name=name,mainDivBackImageUrl=mainDivBackImageUrl,designedBy=Designer.objects.filter(id=designerid)[0],thumbnailImgUrl=thumbnailImgUrl).save()
+        
+            messages.success(request, 'New Room Added Successfully!')
+            return redirect("adminArea")
+        return render(request,"adminArea/addRoom.html",context)
+    else:
+        return redirect('error')
 
+
+@login_required(login_url='/aesthetic/login')
 def viewRoomImage(request,pk):
-    room=Room.objects.filter(id=pk)[0]
-    images=Images.objects.filter(room=room)
-    context={"room":room,"images":images}
-    if(request.method == "POST"):
-        imgurl=request.POST['imgUrl']
-        Images(room=room,image=imgurl).save()
-        messages.success(request, 'Image Added Successfully!')
-        return redirect(request.META.get('HTTP_REFERER'))
+    if request.user.is_staff :
+        room=Room.objects.filter(id=pk)[0]
+        images=Images.objects.filter(room=room)
+        context={"room":room,"images":images}
+        if(request.method == "POST"):
+            imgurl=request.POST['imgUrl']
+            Images(room=room,image=imgurl).save()
+            messages.success(request, 'Image Added Successfully!')
+            return redirect(request.META.get('HTTP_REFERER'))
 
-    
-    return render(request,"adminArea/roomImage.html",context)
+        
+        return render(request,"adminArea/roomImage.html",context)
+    else:
+        return redirect('error')
 
+
+@login_required(login_url='/aesthetic/login')
 def delRoom(request,pk):
-    pk=Room.objects.filter(id=pk)[0]
-    pk.delete()
-    messages.success(request, 'Room Deleted Successfully!')
-    return redirect("adminArea")
+    if request.user.is_staff :
+        pk=Room.objects.filter(id=pk)[0]
+        pk.delete()
+        messages.success(request, 'Room Deleted Successfully!')
+        return redirect("adminArea")
+    else:
+        return redirect('error')
 
+
+
+
+@login_required(login_url='/aesthetic/login')
 def delBookedDesign(request,pk):
-    BookDesign.objects.filter(id=pk).delete()
-    messages.success(request,"Data deleted !!")
-    return redirect("adminArea")
+    if request.user.is_staff :
+        BookDesign.objects.filter(id=pk).delete()
+        messages.success(request,"Data deleted !!")
+        return redirect("adminArea")
+    else:
+        return redirect('error')
 
+
+@login_required(login_url='/aesthetic/login')
 def delBookedSession(request,pk):
-    BookSession.objects.filter(id=pk).delete()
-    messages.success(request,"Data deleted !!")
-    return redirect("adminArea")
+    if request.user.is_staff :
+        BookSession.objects.filter(id=pk).delete()
+        messages.success(request,"Data deleted !!")
+        return redirect("adminArea")
+    else:
+        return redirect('error')
 
 
 def loginPage(request):
@@ -263,3 +326,13 @@ def registerPage(request):
             return redirect('login')
     context={'form':form}
     return render(request,"adminArea/register.html",context)
+
+
+@login_required(login_url='/aesthetic/login')
+def Logout(request):
+    logout(request)
+    return redirect('homepage')
+
+
+def errorPage(request):
+    return render(request,"adminArea/Error.html")
