@@ -34,7 +34,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/aethetic/adminArea">
                 <div class="sidebar-brand-icon ">
                     <img src="/static/images/logo.png" height="65" width="115" />
                 </div>
@@ -346,9 +346,10 @@
                                             <td>{{d.address}}</td>
                                             <td>{{d.pincode}}</td>
                                             <td>{{d.designer.name}}</td>
-                                            <td>{{d.message}}</td>
+
                                             <td><img src="{{d.interestedDesign.image}}" height="70" width="100" /></td>
-                                            <td><a href="" class="btn btn-primary">View</a><a href=""
+                                            <td>{{d.message}}</td>
+                                            <td><a href="/aesthetic/delBookedDesign/{{d.id}}"
                                                     class="btn btn-danger">Delete</a></td>
                                         </tr>
                                         {% endfor %}

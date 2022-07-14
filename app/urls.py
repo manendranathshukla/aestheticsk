@@ -20,7 +20,10 @@ urlpatterns = [
     path('aesthetic/viewBookedDesigns/',viewBookedDesigns),
     path('aesthetic/viewRooms/',viewRooms),
     path('aesthetic/addRoom/',addRoom),
+    path('aesthetic/viewRoomImages/<int:pk>',viewRoomImage,name="viewRoomImage"),
     path('aesthetic/delRoom/<int:pk>',delRoom),
+    path('aesthetic/delBookedDesign/<int:pk>',delBookedDesign),
+    path('aesthetic/delBookedSession/<int:pk>',delBookedSession),
 
 
 ]

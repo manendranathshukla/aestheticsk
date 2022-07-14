@@ -5,7 +5,8 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 from django.contrib import messages
 from .forms import *
-
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from app.models import *
 
 # Create your views here.
@@ -93,7 +94,9 @@ def bookDesign(request,pk):
 def adminPage(request):
     sessionBookedCount=len(BookSession.objects.all())
     bookedDesignCount=len(BookDesign.objects.all())
-    context={"sessionCount":sessionBookedCount,"designBookedCount":bookedDesignCount}
+    rooms=len(Room.objects.all())
+    designers=len(Designer.objects.all())
+    context={"sessionCount":sessionBookedCount,"designBookedCount":bookedDesignCount,"roomCount":rooms,"designersCount":designers}
     return render(request,"adminArea/index.html",context)
 
 
@@ -206,6 +209,18 @@ def addRoom(request):
         return redirect("adminArea")
     return render(request,"adminArea/addRoom.html",context)
 
+def viewRoomImage(request,pk):
+    room=Room.objects.filter(id=pk)[0]
+    images=Images.objects.filter(room=room)
+    context={"room":room,"images":images}
+    if(request.method == "POST"):
+        imgurl=request.POST['imgUrl']
+        Images(room=room,image=imgurl).save()
+        messages.success(request, 'Image Added Successfully!')
+        return redirect(request.META.get('HTTP_REFERER'))
+
+    
+    return render(request,"adminArea/roomImage.html",context)
 
 def delRoom(request,pk):
     pk=Room.objects.filter(id=pk)[0]
@@ -213,8 +228,28 @@ def delRoom(request,pk):
     messages.success(request, 'Room Deleted Successfully!')
     return redirect("adminArea")
 
+def delBookedDesign(request,pk):
+    BookDesign.objects.filter(id=pk).delete()
+    messages.success(request,"Data deleted !!")
+    return redirect("adminArea")
+
+def delBookedSession(request,pk):
+    BookSession.objects.filter(id=pk).delete()
+    messages.success(request,"Data deleted !!")
+    return redirect("adminArea")
+
 
 def loginPage(request):
+    if request.method == 'POST':
+        username=request.POST['username']
+        password=request.POST['password']
+        user = authenticate(request, username = username, password = password)
+        if user is not None:
+            form = login(request, user)
+            messages.success(request, f' Welcome {username} !!')
+            return redirect('adminArea')
+        else:
+            messages.info(request, f'account done not exit plz sign in')
     return render(request,"adminArea/login.html")
 
 def registerPage(request):
