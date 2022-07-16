@@ -589,7 +589,7 @@
     <script>
         {% for msg in messages %}
         alertify.set('notifier', 'position', 'top-right');
-        alertify.success('{{msg}}');
+        alertify.{{msg.tags}}('{{msg}}');
         {% endfor %}
     </script>
     <!-- Bootstrap core JavaScript-->

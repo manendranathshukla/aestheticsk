@@ -58,12 +58,16 @@ class Room(Model):
     mainDivBackImageUrl=models.URLField(max_length=200)
     designedBy=models.ForeignKey(Designer,on_delete=models.CASCADE)
     thumbnailImgUrl=models.URLField(max_length=200,null=True,blank=True)
+    showFeatured=models.BooleanField(default=False)
+    showTrending=models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
 
 class Images(models.Model):
     room = models.ForeignKey(Room,on_delete=models.CASCADE)
+    isFeatured=models.BooleanField(default=False)
+    isTrending=models.BooleanField(default=False)
     image = models.URLField(max_length=200,null=True,blank=True)
 
     @property

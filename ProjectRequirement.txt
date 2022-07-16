@@ -1,0 +1,9 @@
+Add Room Sample:
+    give option to choose 
+        a> Trending 
+        b> Featured 
+
+
+
+Featured Designs - Unlimited with Featured tag in crousal 
+Trending Design - 9 in Box Section

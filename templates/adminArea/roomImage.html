@@ -487,6 +487,17 @@
                                 <label for="Url">Image Url</label>
                                 <input type="text" class="form-control" name="imgUrl" id="url"
                                     aria-describedby="emailHelp" placeholder="Enter image url">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" name="checks" class="custom-control-input" id="customCheck1"
+                                        value="showFeatured">
+                                    <label class="custom-control-label" for="customCheck1">Featured</label>
+                                </div>
+                                <input hidden name="roomid" value="{{r.id}}" />
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" name="checks" class="custom-control-input"
+                                        value="showTrending" id="customCheck2">
+                                    <label class="custom-control-label" for="customCheck2">Trending</label>
+                                </div>
 
                             </div>
                         </div>
@@ -504,7 +515,7 @@
         <script>
             {% for msg in messages %}
             alertify.set('notifier', 'position', 'top-right');
-            alertify.success('{{msg}}');
+            alertify.{{msg.tags}}('{{msg}}');
             {% endfor %}
         </script>
 

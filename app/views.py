@@ -20,7 +20,17 @@ def home(request):
     contact=Contact.objects.first()
     designer=Designer.objects.first()
     rooms=Room.objects.all()
-    context={'whyAsth':whyAsth,'about':aboutContent,'specialization':specialization,'services':services,'contact':contact,"rooms":rooms,'designer':designer}
+    featuredRooms=Room.objects.filter(showFeatured=True)
+    trendingRooms=Room.objects.filter(showTrending=True)
+    featuredList=[]
+    trendingList=[]
+    for o in featuredRooms:
+        images= Images.objects.filter(room=o,isFeatured=True)
+        featuredList.append([o,images])
+    for t in trendingRooms:
+        images= Images.objects.filter(room=t,isTrending=True)
+        trendingList.append([t,images])
+    context={'whyAsth':whyAsth,'about':aboutContent,'specialization':specialization,'services':services,'contact':contact,"rooms":rooms,'designer':designer,"featuredRoom":featuredList,"trendingRoom":trendingList}
     return render(request,'index.html',context=context)
 
 
@@ -225,6 +235,27 @@ def viewBookedDesigns(request):
 @login_required(login_url='/aesthetic/login')
 def viewRooms(request):
     if request.user.is_staff :
+        if request.method == 'POST':
+            featured = request.POST.getlist('featured[]')
+           
+
+            trending = request.POST.getlist('trending[]')
+            if(len(featured) > 1 and len(trending) > 1):
+                messages.error(request,"You are allowed to make only one room featured and trending")
+                return redirect(request.META.get('HTTP_REFERER'))
+            else:
+                for f in featured:
+                    l=f.split(',')
+                    room=Room.objects.filter(id=int(l[0]))[0]
+                    room.showFeatured=True 
+                    room.save()
+                for t in trending:
+                    l=t.split(',')
+                    room=Room.objects.filter(id=int(l[0]))[0]
+                    room.showTrending=True 
+                    room.save()
+                messages.success(request,"Updated")
+                return redirect(request.META.get('HTTP_REFERER'))
         rooms=Room.objects.all()
         context={"rooms":rooms}
         return render(request,"adminArea/rooms.html",context=context)
@@ -259,7 +290,16 @@ def viewRoomImage(request,pk):
         context={"room":room,"images":images}
         if(request.method == "POST"):
             imgurl=request.POST['imgUrl']
-            Images(room=room,image=imgurl).save()
+            checks=request.POST.getlist('checks')
+            if("showFeatured" in checks):
+                showFeatured=True
+            else:
+                showFeatured=False
+            if("showTrending" in checks):
+                showTrending=True
+            else:
+                showTrending=False
+            Images(room=room,isFeatured=showFeatured,isTrending=showTrending,image=imgurl).save()
             messages.success(request, 'Image Added Successfully!')
             return redirect(request.META.get('HTTP_REFERER'))
 
@@ -336,3 +376,4 @@ def Logout(request):
 
 def errorPage(request):
     return render(request,"adminArea/Error.html")
+

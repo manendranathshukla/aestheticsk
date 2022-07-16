@@ -314,8 +314,11 @@
                                             <th>Header Image</th>
                                             <th>Designed By</th>
                                             <th>Thumbnail Image</th>
-
+                                            <th>Is Featured</th>
+                                            <th>Is Trending</th>
+                                            <th>Mark As</th>
                                             <th>Action</th>
+
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -325,28 +328,53 @@
                                             <th>Header Image</th>
                                             <th>Designed By</th>
                                             <th>Thumbnail Image</th>
-
+                                            <th>Is Featured</th>
+                                            <th>Is Trending</th>
+                                            <th>Mark As</th>
                                             <th>Action</th>
+
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        {% for r in rooms %}
-                                        <tr>
-                                            <td>{{r.id}}</td>
-                                            <td>{{r.name}}</td>
-                                            <td><img src="{{r.mainDivBackImageUrl}}" height="70" width="100" /></td>
+                                        <form method="post" action=".">
+                                            {% csrf_token %}
+                                            {% for r in rooms %}
+                                            <tr>
+                                                <td>{{r.id}}</td>
+                                                <td>{{r.name}}</td>
+                                                <td><img src="{{r.mainDivBackImageUrl}}" height="70" width="100" /></td>
 
-                                            <td>{{r.designedBy.name}}</td>
+                                                <td>{{r.designedBy.name}}</td>
 
-                                            <td><img src="{{r.thumbnailImgUrl}}" height="70" width="100" /></td>
+                                                <td><img src="{{r.thumbnailImgUrl}}" height="70" width="100" /></td>
 
-                                            <td><a href="/aesthetic/viewRoomImages/{{r.id}}"
-                                                    class="btn btn-primary">View</a><a
-                                                    href="/aesthetic/delRoom/{{r.id}}" class="btn btn-danger">Delete</a>
-                                            </td>
-                                        </tr>
-                                        {% endfor %}
+                                                <td>{{r.showFeatured}}</td>
+                                                <td>{{r.showTrending}}</td>
 
+                                                <td>
+                                                    <label for="featured">Featured</label>
+                                                    <input type="checkbox" id="featured" name="featured[]"
+                                                        value="{{r.id}},featured">
+                                                    <label for="featured">Trending</label>
+                                                    <input type="checkbox" id="featured" name="trending[]"
+                                                        value="{{r.id}},featured">
+
+
+                                                </td>
+                                                <!-- <td><a href="/aesthetic/viewRoomImages/{{r.id}}"
+                                                    class="btn btn-primary">Featured</a><a
+                                                    href="/aesthetic/delRoom/{{r.id}}"
+                                                    class="btn btn-secondary">Trending</a>
+                                            </td> -->
+                                                <td><a href="/aesthetic/viewRoomImages/{{r.id}}"
+                                                        class="btn btn-primary"><i class="fa fa-eye"
+                                                            aria-hidden="true"></i></a><a
+                                                        href="/aesthetic/delRoom/{{r.id}}" class="btn btn-danger"><i
+                                                            class="fa fa-trash" aria-hidden="true"></i></a>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                            <button class="btn btn-success" type="submit">Save</button>
                                     </tbody>
                                 </table>
                             </div>
@@ -403,7 +431,8 @@
     <script>
         {% for msg in messages %}
         alertify.set('notifier', 'position', 'top-right');
-        alertify.success('{{msg}}');
+        
+        alertify.{{msg.tags}}('{{msg}}');
         {% endfor %}
     </script>
     <!-- Bootstrap core JavaScript-->
