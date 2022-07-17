@@ -408,9 +408,88 @@
                     </div>
 
 
+                    <div class="container-fluid">
 
-                    <div class="container">
-                        <div class="container">
+                       
+
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Rooms Details</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Image</th>
+                        <th>Is Featured</th>
+                        <th>Is Trending</th>
+                        <th>Mark As</th>
+                        <th>Action</th>
+
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Id</th>
+                        <th>Image</th>
+                        <th>Is Featured</th>
+                        <th>Is Trending</th>
+                        <th>Mark As</th>
+                        <th>Action</th>
+
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        {% for r in images %}
+                        <tr>
+                            <td>{{r.custom_id}}</td>
+                         
+                            <td><img src="{{r.image}}" height="100" width="120" /></td>
+
+                           
+                            <td>{{r.isFeatured}}</td>
+                            <td>{{r.isTrending}}</td>
+
+                            <td>
+                                <input hidden name="featuredtrending" value="featuredtrendingform" />
+                                 <input hidden name="featured" value="{{r.id}},0">
+                                <label for="featured">Featured</label>
+                                <input type="checkbox" id="featured" name="featured"
+                                value="{{r.id}},1"  {% if r.isFeatured %} checked  {% endif %}     >
+                                <input hidden name="trending" value="{{r.id}},0">
+                                <label for="featured">Trending</label>
+                                <input type="checkbox" id="featured" name="trending"
+                                    value="{{r.id}},1"      {% if r.isTrending %} checked{% endif %}   >
+
+
+                            </td>
+                            <!-- <td><a href="/aesthetic/viewRoomImages/{{r.id}}"
+                                class="btn btn-primary">Featured</a><a
+                                href="/aesthetic/delRoom/{{r.id}}"
+                                class="btn btn-secondary">Trending</a>
+                        </td> -->
+                            <td><a
+                                    href="/aesthetic/delRoomImage/{{r.id}}" class="btn btn-danger"><i
+                                        class="fa fa-trash" aria-hidden="true"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        <button class="btn btn-success" type="submit">Save</button>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+                        <!-- <div class="container">
                             {% for img in images %}
                             <div class="card">
                                 <div class="card-image">
@@ -420,7 +499,7 @@
                                 </div>
                             </div>
                             {% endfor %}
-                        </div>
+                        </div> -->
 
                     </div>
                     <!-- /.container-fluid -->
@@ -493,6 +572,7 @@
                                     <label class="custom-control-label" for="customCheck1">Featured</label>
                                 </div>
                                 <input hidden name="roomid" value="{{r.id}}" />
+                                <input hidden name="addroom" value="addroomform" />
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" name="checks" class="custom-control-input"
                                         value="showTrending" id="customCheck2">
