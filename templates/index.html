@@ -34,11 +34,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="static/css/responsive.css">
     <link rel="stylesheet" href="static/css/smallMobileResponsive.css">
-     <!-- CSS -->
-     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
-     <!-- Default theme -->
-     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
-     <!-- Custom styles for this template-->
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
+    <!-- Custom styles for this template-->
 </head>
 
 <body>
@@ -285,46 +285,20 @@
         </div>
     </div>
 
-
+    {% for r in featuredRoom %}
     <div class="trendingBedroom">
         <div class="head">
-            <h1>Trending Bedroom Designs</h1>
-            <a href="./bedroom.html">See More</a>
+            <h1>Featured {{r.0.name}} Designs</h1>
+            <a href="/rooms/{{r.0.id}}">See More</a>
         </div>
 
         <div id="slider-container" class="slider">
+            {% for img in r.1 %}
             <div class="slide">
-                <img src="https://images.unsplash.com/photo-1574482620811-1aa16ffe3c82?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=20"
-                    alt="">
+                <img src="{{img.image}}" alt="">
             </div>
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1574451311232-cb647e9d71f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=20"
-                    alt="">
-            </div>
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1574449423472-4bc6a3d2473d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=20"
-                    alt="">
-            </div>
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1574459472673-09bbda49102a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=928&q=20"
-                    alt="">
-            </div>
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1479981280584-037818c1297d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=20"
-                    alt="">
-            </div>
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1511593358241-7eea1f3c84e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=20"
-                    alt="">
-            </div>
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1560259324-12a044e67c34?ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=20"
-                    alt="">
-            </div>
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1532787799187-93655e51d472?ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=20"
-                    alt="">
-            </div>
+            {% endfor %}
+
             <div onclick="prev()" class="control-prev-btn">
                 <i class="fas fa-arrow-left"></i>
             </div>
@@ -335,188 +309,24 @@
         </div>
 
     </div>
-    <div class="trendingBedroom">
-        <div class="head">
-            <h1>Trending Drawing Hall Designs</h1>
-            <a href="./drawingroom.html">See More</a>
-        </div>
-
-        <div id="slider-container2" class="slider">
-            <div class="slide2">
-                <img src="https://images.unsplash.com/photo-1574482620811-1aa16ffe3c82?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=20"
-                    alt="">
-            </div>
-            <div class="slide2">
-                <img src="https://images.unsplash.com/photo-1574451311232-cb647e9d71f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=20"
-                    alt="">
-            </div>
-            <div class="slide2">
-                <img src="https://images.unsplash.com/photo-1574449423472-4bc6a3d2473d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=20"
-                    alt="">
-            </div>
-            <div class="slide2">
-                <img src="https://images.unsplash.com/photo-1574459472673-09bbda49102a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=928&q=20"
-                    alt="">
-            </div>
-            <div class="slide2">
-                <img src="https://images.unsplash.com/photo-1479981280584-037818c1297d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=20"
-                    alt="">
-            </div>
-            <div class="slide2">
-                <img src="https://images.unsplash.com/photo-1511593358241-7eea1f3c84e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=20"
-                    alt="">
-            </div>
-            <div class="slide2">
-                <img src="https://images.unsplash.com/photo-1560259324-12a044e67c34?ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=20"
-                    alt="">
-            </div>
-            <div class="slide2">
-                <img src="images.unsplash.com/photo-1532787799187-93655e51d472?ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=20"
-                    alt="">
-            </div>
-            <div onclick="prev2()" class="control-prev-btn">
-                <i class="fas fa-arrow-left"></i>
-            </div>
-            <div onclick="next2()" class="control-next-btn">
-                <i class="fas fa-arrow-right"></i>
-            </div>
-
-        </div>
-
-    </div>
-    <div class="trendingBedroom">
-        <div class="head">
-            <h1>Trending Kitchen Designs</h1>
-            <a href="./kitchen.html">See More</a>
-        </div>
-
-        <div id="slider-container" class="slider">
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1574482620811-1aa16ffe3c82?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=20"
-                    alt="">
-            </div>
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1574451311232-cb647e9d71f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=20"
-                    alt="">
-            </div>
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1574449423472-4bc6a3d2473d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=20"
-                    alt="">
-            </div>
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1574459472673-09bbda49102a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=928&q=20"
-                    alt="">
-            </div>
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1479981280584-037818c1297d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=20"
-                    alt="">
-            </div>
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1511593358241-7eea1f3c84e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=20"
-                    alt="">
-            </div>
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1560259324-12a044e67c34?ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=20"
-                    alt="">
-            </div>
-            <div class="slide">
-                <img src="images.unsplash.com/photo-1532787799187-93655e51d472?ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=20"
-                    alt="">
-            </div>
-            <div onclick="prev()" class="control-prev-btn">
-                <i class="fas fa-arrow-left"></i>
-            </div>
-            <div onclick="next()" class="control-next-btn">
-                <i class="fas fa-arrow-right"></i>
-            </div>
-
-        </div>
-    </div>
-
-
+    {% endfor %}
     <div class="projects">
         <h2>Look at our trending designs</h2>
+        {% for t in trendingRoom %}
         <div class="eachProjects">
             <input class="toggle-box" id="toggleId-7" type="checkbox">
-            <label class="underlineEffect" for="toggleId-7">Bedroom Furnishing</label>
+            <label class="underlineEffect" for="toggleId-7">{{t.0.name}}</label>
             <div class="toggle-box-content">
                 <div class="categoricalImages">
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+                    {% for i in t.1 %}
+                    <img src="{{i.image}}" />
+                    {% endfor %}
 
                 </div>
             </div>
         </div>
-        <div class="eachProjects">
-            <input class="toggle-box" id="toggleId-8" type="checkbox">
-            <label class="underlineEffect" for="toggleId-8">Dining Room Furnishing</label>
-            <div class="toggle-box-content">
-                <div class="categoricalImages">
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+        {% endfor %}
 
-                </div>
-            </div>
-        </div>
-        <div class="eachProjects">
-            <input class="toggle-box" id="toggleId-9" type="checkbox">
-            <label class="underlineEffect" for="toggleId-9">Hall Furnishing</label>
-            <div class="toggle-box-content">
-                <div class="categoricalImages">
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-                    <img
-                        src="https://images.pexels.com/photos/7031825/pexels-photo-7031825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-
-                </div>
-            </div>
-        </div>
 
     </div>
 
@@ -593,7 +403,7 @@
     <script>
         {% for msg in messages %}
         alertify.set('notifier', 'position', 'top-right');
-        alertify.success('{{msg}}');
+        alertify.{{msg.tags}}('{{msg}}');
         {% endfor %}
     </script>
 </body>
