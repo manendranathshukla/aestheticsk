@@ -236,26 +236,34 @@ def viewBookedDesigns(request):
 def viewRooms(request):
     if request.user.is_staff :
         if request.method == 'POST':
-            featured = request.POST.getlist('featured[]')
-           
-
-            trending = request.POST.getlist('trending[]')
-            if(len(featured) > 1 and len(trending) > 1):
-                messages.error(request,"You are allowed to make only one room featured and trending")
-                return redirect(request.META.get('HTTP_REFERER'))
-            else:
-                for f in featured:
-                    l=f.split(',')
-                    room=Room.objects.filter(id=int(l[0]))[0]
-                    room.showFeatured=True 
-                    room.save()
-                for t in trending:
-                    l=t.split(',')
-                    room=Room.objects.filter(id=int(l[0]))[0]
-                    room.showTrending=True 
-                    room.save()
-                messages.success(request,"Updated")
-                return redirect(request.META.get('HTTP_REFERER'))
+            featured = request.POST.getlist('featured')
+            trending = request.POST.getlist('trending')
+            print(featured)
+            # print(trending)
+            # if(len(featured) > 1 and len(trending) > 1):
+            #     messages.error(request,"You are allowed to make only one room featured and trending")
+            #     return redirect(request.META.get('HTTP_REFERER'))
+            # else:
+            for f in featured:
+                fl=f.split(',')
+                
+                room=Room.objects.filter(id=int(fl[0]))[0]
+                
+                if(fl[1] == '1'):
+                    room.showFeatured=True
+                else: 
+                    room.showFeatured=False 
+                room.save()
+            for t in trending:
+                tl=t.split(',')
+                room=Room.objects.filter(id=int(tl[0]))[0]
+                if(tl[1] == '1'):
+                    room.showTrending=True
+                else: 
+                    room.showTrending=False 
+                room.save()
+            messages.success(request,"Updated")
+            return redirect(request.META.get('HTTP_REFERER'))
         rooms=Room.objects.all()
         context={"rooms":rooms}
         return render(request,"adminArea/rooms.html",context=context)
@@ -289,19 +297,48 @@ def viewRoomImage(request,pk):
         images=Images.objects.filter(room=room)
         context={"room":room,"images":images}
         if(request.method == "POST"):
-            imgurl=request.POST['imgUrl']
-            checks=request.POST.getlist('checks')
-            if("showFeatured" in checks):
-                showFeatured=True
-            else:
-                showFeatured=False
-            if("showTrending" in checks):
-                showTrending=True
-            else:
-                showTrending=False
-            Images(room=room,isFeatured=showFeatured,isTrending=showTrending,image=imgurl).save()
-            messages.success(request, 'Image Added Successfully!')
-            return redirect(request.META.get('HTTP_REFERER'))
+            if request.POST.get('featuredtrending') == 'featuredtrendingform':
+                featured = request.POST.getlist('featured')
+                trending = request.POST.getlist('trending')
+            
+                # if( len(trending) > 1):
+                #     messages.error(request,"You are allowed to make only one room featured and trending")
+                #     return redirect(request.META.get('HTTP_REFERER'))
+                # else:
+                for f in featured:
+                    fl=f.split(',')
+                    
+                    roomImage=Images.objects.filter(id=int(fl[0]))[0]
+                    
+                    if(fl[1] == '1'):
+                        roomImage.isFeatured=True
+                    else: 
+                        roomImage.isFeatured=False 
+                    roomImage.save()
+                for t in trending:
+                    tl=t.split(',')
+                    roomImage=Images.objects.filter(id=int(tl[0]))[0]
+                    if(tl[1] == '1'):
+                        roomImage.isTrending=True
+                    else: 
+                        roomImage.isTrending=False 
+                    roomImage.save()
+                messages.success(request,"Updated")
+                return redirect(request.META.get('HTTP_REFERER'))
+            elif request.POST.get('addroom') == 'addroomform':
+                imgurl=request.POST['imgUrl']
+                checks=request.POST.getlist('checks')
+                if("showFeatured" in checks):
+                    showFeatured=True
+                else:
+                    showFeatured=False
+                if("showTrending" in checks):
+                    showTrending=True
+                else:
+                    showTrending=False
+                Images(room=room,isFeatured=showFeatured,isTrending=showTrending,image=imgurl).save()
+                messages.success(request, 'Image Added Successfully!')
+                return redirect(request.META.get('HTTP_REFERER'))
 
         
         return render(request,"adminArea/roomImage.html",context)
@@ -340,7 +377,14 @@ def delBookedSession(request,pk):
         return redirect("adminArea")
     else:
         return redirect('error')
-
+@login_required(login_url='/aesthetic/login')
+def delRoomImage(request,pk):
+    if request.user.is_staff :
+        Images.objects.filter(id=pk).delete()
+        messages.success(request,"Image deleted !!")
+        return redirect(request.META.get('HTTP_REFERER'))
+    else:
+        return redirect('error')
 
 def loginPage(request):
     if request.method == 'POST':

@@ -352,13 +352,16 @@
                                                 <td>{{r.showTrending}}</td>
 
                                                 <td>
+                                                   
+                                                     <input hidden name="featured" value="{{r.id}},0">
                                                     <label for="featured">Featured</label>
-                                                    <input type="checkbox" id="featured" name="featured[]"
-                                                        value="{{r.id}},featured">
+                                                    <input type="checkbox" id="featured" name="featured"
+                                                    value="{{r.id}},1"  {% if r.showFeatured %} checked  {% endif %}     >
+                                                    <input hidden name="trending" value="{{r.id}},0">
                                                     <label for="featured">Trending</label>
-                                                    <input type="checkbox" id="featured" name="trending[]"
-                                                        value="{{r.id}},featured">
-
+                                                    <input type="checkbox" id="featured" name="trending"
+                                                        value="{{r.id}},1"      {% if r.showTrending %} checked{% endif %}   >
+ 
 
                                                 </td>
                                                 <!-- <td><a href="/aesthetic/viewRoomImages/{{r.id}}"
@@ -431,8 +434,8 @@
     <script>
         {% for msg in messages %}
         alertify.set('notifier', 'position', 'top-right');
-        
-        alertify.{{msg.tags}}('{{msg}}');
+
+        alertify.{ { msg.tags } } ('{{msg}}');
         {% endfor %}
     </script>
     <!-- Bootstrap core JavaScript-->
