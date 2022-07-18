@@ -402,9 +402,12 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">{{room.name}} Designs</h1>
-                        <button data-toggle="modal" data-target="#form"
+                        <!-- <button data-toggle="modal" data-target="#form"
                             class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-plus fa-sm text-white-50"></i> Add More Designs</button>
+                                class="fas fa-plus fa-sm text-white-50"></i> Add More Designs</button> -->
+                                <a href="/aesthetic/addRoomImage"
+                                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                    class="fas fa-plus fa-sm text-white-50"></i> Add More Designs</a>
                     </div>
 
 
@@ -457,7 +460,7 @@
                             <td>{{r.isTrending}}</td>
 
                             <td>
-                                <input hidden name="featuredtrending" value="featuredtrendingform" />
+                              
                                  <input hidden name="featured" value="{{r.id}},0">
                                 <label for="featured">Featured</label>
                                 <input type="checkbox" id="featured" name="featured"
@@ -559,7 +562,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form method="post" action="">
+                    <form method="post" action="aesthetic/addRoomImage/">
                         {% csrf_token %}
                         <div class="modal-body">
                             <div class="form-group">
@@ -572,7 +575,7 @@
                                     <label class="custom-control-label" for="customCheck1">Featured</label>
                                 </div>
                                 <input hidden name="roomid" value="{{r.id}}" />
-                                <input hidden name="addroom" value="addroomform" />
+                               
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" name="checks" class="custom-control-input"
                                         value="showTrending" id="customCheck2">

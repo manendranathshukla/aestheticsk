@@ -435,7 +435,7 @@
         {% for msg in messages %}
         alertify.set('notifier', 'position', 'top-right');
 
-        alertify.{ { msg.tags } } ('{{msg}}');
+        alertify.{{ msg.tags }} ('{{msg}}');
         {% endfor %}
     </script>
     <!-- Bootstrap core JavaScript-->
