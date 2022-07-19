@@ -129,6 +129,11 @@ STATICFILES_DIRS = (
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
+
+
+
+
+
 EMAIL_PORT = 465
 EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
 EMAIL_USE_SSL = True
