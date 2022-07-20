@@ -28,6 +28,7 @@ urlpatterns = [
     path('aesthetic/delBookedDesign/<int:pk>',delBookedDesign),
     path('aesthetic/delBookedSession/<int:pk>',delBookedSession),
     path('aesthetic/error',errorPage,name="error"),
+    path('aesthetic/search',searchPage,name="searchResults"),
     
 
 

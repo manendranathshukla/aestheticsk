@@ -435,3 +435,12 @@ def Logout(request):
 def errorPage(request):
     return render(request,"adminArea/Error.html")
 
+def searchPage(request):
+    # query = request.GET.get('q', '')
+    # if query:
+    #     # query example
+    #     results = MyEntity.objects.filter(name__icontains=query).distinct()
+    # else:
+    #     results = []
+    
+    return render(request,"adminArea/searchResults.html")
