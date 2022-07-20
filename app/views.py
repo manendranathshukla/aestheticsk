@@ -42,7 +42,8 @@ def room(request,pk):
     designer=Designer.objects.first()
     contact=Contact.objects.first()
     aboutContent=About.objects.first()
-    return render(request, "room.html",context={"myroom":myroom,"images":images,'designer':designer,'contact':contact,'about':aboutContent})
+    rooms=Room.objects.all()
+    return render(request, "room.html",context={"myroom":myroom,"images":images,'designer':designer,'contact':contact,'about':aboutContent,"rooms":rooms})
 
 
 
@@ -177,9 +178,21 @@ def updateContact(request):
             address=request.POST['address']
             email=request.POST['email']
             contact=request.POST['contact']
+            facebook=request.POST['facebook']
+            linkedin=request.POST['linkedin']
+            twitter=request.POST['twitter']
+            instagram=request.POST['instagram']
+            youtube=request.POST['youtube']
+            
             contactDetails.office_address=address
             contactDetails.office_email=email
             contactDetails.office_contact=contact
+            contactDetails.facebook=facebook
+            contactDetails.linkedin=linkedin
+            contactDetails.twitter=twitter
+            contactDetails.instagram=instagram
+            contactDetails.youtube=youtube
+            
             contactDetails.save()
         
             messages.success(request, 'Contact Details Updated Successfully!')
@@ -189,12 +202,13 @@ def updateContact(request):
         return redirect('error')
 
 @login_required(login_url='/aesthetic/login')
-def updateDesigner(request):
+def updateDesigner(request,pk):
     if request.user.is_staff :
-        designer= Designer.objects.first()
+        designer= Designer.objects.filter(id=pk)[0]
         if(request.method == "POST"):
             name=request.POST['name']
             bio=request.POST['bio']
+            profile=request.POST['profile']
             linkedin=request.POST['linkedin']
             facebook=request.POST['facebook']
             twitter=request.POST['twitter']
@@ -202,17 +216,69 @@ def updateDesigner(request):
             youtube=request.POST['youtube']
             designer.name=name
             designer.bio=bio
+            designer.profilePic=profile
             designer.linkedin=linkedin
             designer.facebook=facebook
             designer.instagram=instagram
             designer.twitter=twitter
             designer.youtube=youtube
             designer.save()
-            messages.success(request, 'Saved')
+            messages.success(request, 'Updated')
             return redirect("adminArea")
         return render(request,"adminArea/updateDesigner.html",context={"designer":designer})
     else:
         return redirect('error')
+
+
+@login_required(login_url='/aesthetic/login')
+def addDesigner(request):
+    if request.user.is_staff :
+        if(request.method == "POST"):
+            name=request.POST['name']
+            bio=request.POST['bio']
+            profile=request.POST['profile']
+            linkedin=request.POST['linkedin']
+            facebook=request.POST['facebook']
+            twitter=request.POST['twitter']
+            instagram=request.POST['instagram']
+            youtube=request.POST['youtube']
+            designer.name=name
+            designer.bio=bio
+            designer.profilePic=profile
+            designer.linkedin=linkedin
+            designer.facebook=facebook
+            designer.instagram=instagram
+            designer.twitter=twitter
+            designer.youtube=youtube
+            Designer(name=name,bio=bio,profilePic=profile,linkedin=linkedin,facebook=facebook,instagram=instagram,twitter=twitter,youtube=youtube).save()
+            messages.success(request, 'New Designer Added Succesfully!')
+            return redirect("adminArea")
+        return render(request,"adminArea/addDesigner.html")
+    else:
+        return redirect('error')
+
+
+
+@login_required(login_url='/aesthetic/login')
+def viewDesigners(request):
+    if request.user.is_staff :
+        designers=Designer.objects.all()
+        return render(request,"adminArea/designers.html",{"designers":designers})
+    else:
+        return redirect('error')
+
+
+
+
+@login_required(login_url='/aesthetic/login')
+def delDesigner(request,pk):
+    if request.user.is_staff :
+        Designer.objects.filter(id=pk)[0].delete()
+        messages.success(request,"Designer Deleted Succesfully!")
+        return redirect(request.META.get('HTTP_REFERER'))
+    else:
+        return redirect('error')
+
 
 
 @login_required(login_url='/aesthetic/login')

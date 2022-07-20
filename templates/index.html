@@ -47,7 +47,7 @@
 
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"><img class="navbar-logo" src="static/images/logo.png" /></a>
+        <a class="navbar-brand" href="/"><img class="navbar-logo" src="static/images/logo.png" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -61,10 +61,10 @@
             </form>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">About Us <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#aboutUs">About Us <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
+                    <a class="nav-link" href="#ourServices">Services</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -72,14 +72,13 @@
                         Designs
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Drawing Room</a>
-                        <a class="dropdown-item" href="#">Dining Room</a>
-                        <a class="dropdown-item" href="#">Bedroom</a>
-                        <a class="dropdown-item" href="#">Kitchens</a>
+                        {% for r in rooms %}
+                        <a class="dropdown-item" href="/rooms/{{r.id}}">{{r.name}}</a>
+                      {% endfor %}
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="#contactUs">Contact</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" ref="tel:8665562570" class="call"><i class="fa fa-phone"></i></a>
@@ -96,11 +95,11 @@
                 <h2>home a reality</h2>
                 <div class="servicesProvided"><label>Interior Designers | Construction | Services</label></div>
                 <div class="banner-social-media-icons">
-                    <a href="#"><i class="fa fa-facebook-square"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-youtube"></i></a>
-                    <a href="#"><i class="fa fa-linkedin"></i></a>
-                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="{{contact.facebook}}"><i class="fa fa-facebook"></i></a>
+                    <a href="{{contact.twitter}}"><i class="fa fa-twitter"></i></a>
+                    <a href="{{contact.youtube}}"><i class="fa fa-youtube"></i></a>
+                    <a href="{{contact.linkedin}}"><i class="fa fa-linkedin"></i></a>
+                    <a href="{{contact.instagram}}"><i class="fa fa-instagram"></i></a>
                 </div>
                 <div class="hire-us">
                     <label> Hire Us for </label>
@@ -205,8 +204,7 @@
             <p>{{designer.bio}}</p>
         </div>
         <div class="right">
-            <img
-                src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600" />
+            <img src="{{designer.profilePic}}">
         </div>
     </div>
     <div class="shortSpecials">
@@ -231,7 +229,7 @@
             <h4>assured</h4>
         </li>
     </div>
-    <div class="about-us">
+    <div class="about-us" id="aboutUs">
         <h1>About us</h1>
         <p>{{about.content}}</p>
     </div>
@@ -331,7 +329,7 @@
     </div>
 
 
-    <div class="our-services">
+    <div class="our-services" id="ourServices">
         <h1>End-to-End Interior Solutions | All Services</h1>
         <div class="categories">
             {% for svc in services %}
@@ -351,7 +349,7 @@
         </div>
     </div>
 
-    <div class="addressMap">
+    <div class="addressMap" id="contactUs">
         <div class="map">
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.8521632333877!2d85.26772785051705!3d23.35736998470988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4dfd521948151%3A0x761e0bc793e8337f!2sShri%20Sai%20Ashray%20Apartment!5e0!3m2!1sen!2sin!4v1654102214702!5m2!1sen!2sin"
@@ -374,7 +372,7 @@
     </div>
     <div class="footer">
         <div class="upper">
-            <img src="static/images/WhatsApp_Image_2022-05-31_at_3.00.57_PM-removebg-preview.png" />
+            <a  href="/"> <img src="/static/images/WhatsApp_Image_2022-05-31_at_3.00.57_PM-removebg-preview.png" /></a>
             <p>{{about.footer_content}}</p>
         </div>
         <div class="lower">
@@ -394,7 +392,7 @@
         </div>
     </div>
     <div class="stamp">
-        <span>Website designed & developed by Rishu Raj</span>
+        <span>Website designed & developed by Rishu Raj & Manendra </span>
     </div>
 
 
