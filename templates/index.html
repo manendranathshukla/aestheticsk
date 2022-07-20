@@ -312,8 +312,8 @@
         <h2>Look at our trending designs</h2>
         {% for t in trendingRoom %}
         <div class="eachProjects">
-            <input class="toggle-box" id="toggleId-7" type="checkbox">
-            <label class="underlineEffect" for="toggleId-7">{{t.0.name}}</label>
+            <input class="toggle-box" id="toggleId-{{t.0.id}}" type="checkbox">
+            <label class="underlineEffect" for="toggleId-{{t.0.id}}">{{t.0.name}}</label>
             <div class="toggle-box-content">
                 <div class="categoricalImages">
                     {% for i in t.1 %}
