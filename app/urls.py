@@ -16,7 +16,10 @@ urlpatterns = [
     path('aesthetic/updateSpecialized/',updateSpecialized),
     path('aesthetic/updateService/',updateService),
     path('aesthetic/updateContact/',updateContact),
-    path('aesthetic/updateDesigner/',updateDesigner),
+    path('aesthetic/updateDesigner/<int:pk>',updateDesigner),
+    path('aesthetic/addDesigner/',addDesigner),
+    path('aesthetic/delDesigner/<int:pk>',delDesigner),
+    path('aesthetic/viewDesigners/',viewDesigners),
     path('aesthetic/viewBookedSessions/',viewBookedSessions),
     path('aesthetic/viewBookedDesigns/',viewBookedDesigns),
     path('aesthetic/viewRooms/',viewRooms),
@@ -28,6 +31,7 @@ urlpatterns = [
     path('aesthetic/delBookedDesign/<int:pk>',delBookedDesign),
     path('aesthetic/delBookedSession/<int:pk>',delBookedSession),
     path('aesthetic/error',errorPage,name="error"),
+    path('aesthetic/search',searchPage,name="searchResults"),
     
 
 

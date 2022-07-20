@@ -1,0 +1,27 @@
+FrontEnd - Homepage 
+
+1 - Search Functionality Not Implemented 
+2 - Make Header Links Dynamic - [fixed] 
+3 - Social Media Links Dynamic on Homepage - [fixed]
+4 - Make Designer Image Dynamic - [fixed] 
+5 - Link Contact Our Designer Page to designer profile page - [In Progress]
+6 - Look at our Trending Designs showing only for single rooms on expand
+7 - Make text dynamic in single room page above meet our designer button 
+8 - Click on logo redirect to Homepage  - [Fixed]
+9 - Horizontal bars are seen in room page - [ Inprogress ]
+10 - Design booked alert not showing on room page - [ fixed ]
+
+
+
+Dashboard
+
+1 - Search Functionality Not Implemented 
+2 - Remove Message icon from header - fixed 
+3 - Notification system not Implemented - removed dummy Notifications[fixed] 
+4 - User links not dynamic  -  only logout option provided[ fixed]
+5 - charts and pie chart are static and not correct data -> hide them [fixed]
+6 - dashboard link should be correct in all pages [fixed]
+7 - add room should be there in all pages sidebar [fixed]
+8 - Show Username dynamically [fixed]
+9 - logo should always direct to admin dashboard page [fixed]
+10 - forgot password for admin user  Functionality not Implemented

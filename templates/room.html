@@ -35,6 +35,11 @@
     <link rel="stylesheet" href="/static/css/responsive.css">
     <link rel="stylesheet" href="/static/css/smallMobileResponsive.css">
     <link rel="stylesheet" href="/static/css/bedroom.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
+    <!-- Custom styles for this template-->
     <style>
         #card {
             position: relative;
@@ -117,7 +122,7 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"><img class="navbar-logo" src="/static/images/logo.png" /></a>
+        <a class="navbar-brand" href="/"><img class="navbar-logo" src="/static/images/logo.png" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -131,10 +136,10 @@
             </form>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">About Us <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/#aboutUs">About Us <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
+                    <a class="nav-link" href="/#ourServices">Services</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -142,14 +147,13 @@
                         Designs
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Drawing Room</a>
-                        <a class="dropdown-item" href="#">Dining Room</a>
-                        <a class="dropdown-item" href="#">Bedroom</a>
-                        <a class="dropdown-item" href="#">Kitchens</a>
+                        {% for r in rooms %}
+                        <a class="dropdown-item" href="/rooms/{{r.id}}">{{r.name}}</a>
+                        {% endfor %}
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="/#contactUs">Contact</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" ref="tel:8665562570" class="call"><i class="fa fa-phone"></i></a>
@@ -173,12 +177,12 @@
             <a href="{{designer.linkedin}}"><i class="fa fa-linkedin"></i></a>
             <a href="{{designer.instagram}}"><i class="fa fa-instagram"></i></a>
         </div>
-        <h6>Explore our best kitchen designs</h6>
+        <h6>Explore our best {{myroom.name}} designs</h6>
         <button class="button-for-meet"><a href="#">Meet our designer</a></button>
     </div>
 
     <div class="main-image">
-        
+
 
 
         {% for img in images %}
@@ -236,7 +240,7 @@
 
     <div class="footer">
         <div class="upper">
-            <img src="/static/images/WhatsApp_Image_2022-05-31_at_3.00.57_PM-removebg-preview.png" />
+            <a href="/"> <img src="/static/images/WhatsApp_Image_2022-05-31_at_3.00.57_PM-removebg-preview.png" /></a>
             <p>{{about.footer_content}}</p>
         </div>
         <div class="lower">
@@ -256,9 +260,19 @@
         </div>
     </div>
     <div class="stamp">
-        <span>Website designed & developed by Rishu Raj</span>
+        <span>Website designed & developed by Rishu Raj & Manendra</span>
     </div>
 </body>
+
+<!-- Alertify JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<script>
+    {% for msg in messages %}
+    alertify.set('notifier', 'position', 'top-right');
+    alertify.{{ msg.tags }} ('{{msg}}');
+    {% endfor %}
+</script>
+
 <script>
     $(document).ready(function () {
         $(".main-image .show-image #form-trigger").click(function () {

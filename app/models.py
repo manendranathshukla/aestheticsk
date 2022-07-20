@@ -29,6 +29,11 @@ class Contact(Model):
     office_address=models.TextField()
     office_email=models.CharField(max_length=50)
     office_contact=models.CharField(max_length=50)
+    linkedin=models.URLField(max_length=200,null=True,blank=True)
+    facebook=models.URLField(max_length=200,null=True,blank=True)
+    instagram=models.URLField(max_length=200,null=True,blank=True)
+    twitter=models.URLField(max_length=200,null=True,blank=True)
+    youtube=models.URLField(max_length=200,null=True,blank=True)
 
 
 
@@ -43,6 +48,7 @@ class About(Model):
 class Designer(Model):
     name=models.CharField(max_length=50)
     bio=models.TextField(null=True, blank=True)
+    profilePic=models.URLField(max_length=200,null=True,blank=True)
     linkedin=models.URLField(max_length=200,null=True,blank=True)
     facebook=models.URLField(max_length=200,null=True,blank=True)
     instagram=models.URLField(max_length=200,null=True,blank=True)
@@ -68,7 +74,7 @@ class Images(models.Model):
     room = models.ForeignKey(Room,on_delete=models.CASCADE)
     isFeatured=models.BooleanField(default=False)
     isTrending=models.BooleanField(default=False)
-    image = models.URLField(max_length=200,null=True,blank=True)
+    image = models.URLField(max_length=200)
 
     @property
     def custom_id(self):
