@@ -9,10 +9,17 @@ from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
 from app.models import *
 
+from django.http import JsonResponse
 # Create your views here.
 
 
 def home(request):
+    if 'term' in request.GET:
+        qs=Room.objects.filter(name__icontains=request.GET.get('term'))
+        names=[]
+        for n in qs:
+            names.append(n.name)
+        return  JsonResponse(names,safe=False)
     whyAsth=WhyAesthetics.objects.all()
     aboutContent=About.objects.first()
     specialization=Specialized.objects.all()
