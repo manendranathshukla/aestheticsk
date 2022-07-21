@@ -467,30 +467,23 @@ def delRoomImage(request,pk):
         return redirect('error')
 
 def loginPage(request):
-    if request.user :
-        return redirect('adminArea')
-    else:
-        if request.method == 'POST':
-            username=request.POST['username']
-            password=request.POST['password']
-            user = authenticate(request, username = username, password = password)
-            if user is not None:
-                form = login(request, user)
-                messages.success(request, f' Welcome {username} !!')
-                return redirect('adminArea')
-            else:
-                messages.info(request, f'account done not exit plz sign in')
-        return render(request,"adminArea/login.html")
+    if request.method == 'POST':
+        username=request.POST['username']
+        password=request.POST['password']
+        user = authenticate(request, username = username, password = password)
+        if user is not None:
+            form = login(request, user)
+            messages.success(request, f' Welcome {username} !!')
+            return redirect('adminArea')
+        else:
+            messages.info(request, f'account done not exit plz sign in')
+    return render(request,"adminArea/login.html")
 
 def registerPage(request):
     form=CreateUserForm()
     if request.method == 'POST':
         form=CreateUserForm(request.POST)
         if form.is_valid():
-            email=form.cleaned_data.get('email')
-            if(len(User.objects.filter(email=email))>0):
-                messages.error(request,"Email already used!!")
-                return redirect(request.META.get('HTTP_REFERER'))
             form.save()
             user=form.cleaned_data.get('username')
             messages.success(request,"Account created for "+user)
