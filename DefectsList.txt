@@ -5,7 +5,7 @@ FrontEnd - Homepage
 3 - Social Media Links Dynamic on Homepage - [fixed]
 4 - Make Designer Image Dynamic - [fixed] 
 5 - Link Contact Our Designer Page to designer profile page - [In Progress]
-6 - Look at our Trending Designs showing only for single rooms on expand
+6 - Look at our Trending Designs showing only for single rooms on expand - [fixed]
 7 - Make text dynamic in single room page above meet our designer button 
 8 - Click on logo redirect to Homepage  - [Fixed]
 9 - Horizontal bars are seen in room page - [ Inprogress ]
