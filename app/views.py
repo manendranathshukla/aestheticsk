@@ -467,20 +467,17 @@ def delRoomImage(request,pk):
         return redirect('error')
 
 def loginPage(request):
-    if request.user :
-        return redirect('adminArea')
-    else:
-        if request.method == 'POST':
-            username=request.POST['username']
-            password=request.POST['password']
-            user = authenticate(request, username = username, password = password)
-            if user is not None:
-                form = login(request, user)
-                messages.success(request, f' Welcome {username} !!')
-                return redirect('adminArea')
-            else:
-                messages.info(request, f'account done not exit plz sign in')
-        return render(request,"adminArea/login.html")
+    if request.method == 'POST':
+        username=request.POST['username']
+        password=request.POST['password']
+        user = authenticate(request, username = username, password = password)
+        if user is not None:
+            form = login(request, user)
+            messages.success(request, f' Welcome {username} !!')
+            return redirect('adminArea')
+        else:
+            messages.info(request, f'account done not exit plz sign in')
+    return render(request,"adminArea/login.html")
 
 def registerPage(request):
     form=CreateUserForm()
