@@ -106,8 +106,9 @@
 
   .servicesProvided label {
     /* width: 110%; */
-    padding: 1vh 2vw;
-    margin-top: 300px;
+    padding: 2vh 2vw;
+    margin-top: 225px;
+    font-size: 14px;
   }
 
   .bestPrices h1 {
