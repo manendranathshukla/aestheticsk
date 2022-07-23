@@ -75,8 +75,8 @@
 }
 @media screen and (max-width: 360px) {
   .eachSpecialization img {
-    height: 120px;
-    width: 150px;
+    height: 220px;
+    width: 330px;
   }
   .completeHomeInterior .right ol li h4 {
     width: 75vw;
