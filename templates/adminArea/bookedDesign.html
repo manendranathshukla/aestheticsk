@@ -4,12 +4,14 @@
 <head>
 
     <meta charset="utf-8">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon-16x16.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin Dashboard</title>
+    <title>Admin Dashboard | Booked Design List</title>
 
     <!-- Custom fonts for this template-->
     <link href="/static/adminArea/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -30,127 +32,93 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+       <!-- Sidebar -->
+       <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/aethetic/adminArea">
-                <div class="sidebar-brand-icon ">
-                    <img src="/static/images/logo.png" height="65" width="115" />
-                </div>
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/aesthetic/adminArea">
+            <div class="sidebar-brand-icon ">
+                <img src="/static/images/logo.png" height="65" width="115" />
+            </div>
 
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+            <a class="nav-link" href="/aesthetic/adminArea">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
+
+        <!-- Divider -->
+        <!-- <hr class="sidebar-divider"> -->
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            View Contents
+        </div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Manage Data</span>
             </a>
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="/aesthetic/adminArea">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
-
-            <!-- Divider -->
-            <!-- <hr class="sidebar-divider"> -->
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                View Contents
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Manage Data</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-
-                        <a class="collapse-item" href="/aesthetic/viewBookedSessions">Booked Sessions</a>
-                        <a class="collapse-item" href="/aesthetic/viewBookedDesigns">Booked Designs</a>
-                        <a class="collapse-item" href="/aesthetic/viewRooms">View Rooms</a>
-                        <a class="collapse-item" href="/aesthetic/addRoom">Add Room</a>
+                    <a class="collapse-item" href="/aesthetic/viewBookedSessions">View Booked Sessions</a>
+                    <a class="collapse-item" href="/aesthetic/viewBookedDesigns">View Booked Designs</a>
+                    <a class="collapse-item" href="/aesthetic/viewRooms">View Rooms</a>
+                    <a class="collapse-item" href="/aesthetic/viewWhyAestheticsk/">View WhyAestheticsk</a>
+                    <a class="collapse-item" href="/aesthetic/viewSpecialized/">View Specialized</a>
+                    <a class="collapse-item" href="/aesthetic/viewService/">View Services</a>
 
 
-                    </div>
                 </div>
-            </li>
-
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Add Contents
             </div>
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="/aesthetic/updateAbout/">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Update About Section</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/aesthetic/updateWhyAestheticsk/">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Add WhyAestheticsk</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/aesthetic/updateSpecialized/">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Add Specialized</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/aesthetic/updateService/">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Add Service</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/aesthetic/updateContact/">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Update Contact</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="/aesthetic/updateDesigner/">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Update Designer</span></a>
-            </li>
+        </li>
 
 
-            <!-- Nav Item - Tables
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li> -->
+        <!-- Divider -->
+        <hr class="sidebar-divider">
 
-            <!-- Divider
-            <hr class="sidebar-divider d-none d-md-block"> -->
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Update Hompage Contents
+        </div>
+        <!-- Nav Item - Charts -->
+        <li class="nav-item">
+            <a class="nav-link" href="/aesthetic/updateAbout/">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Update About Section</span></a>
+        </li>
+      
+        <li class="nav-item">
+            <a class="nav-link" href="/aesthetic/updateContact/">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Update Contact</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/aesthetic/updateDesigner/">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Update Designer</span></a>
+        </li>
 
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
 
-
-        </ul>
-        <!-- End of Sidebar -->
-
-
-
-
-
-
-
-
-        <!-- Content Wrapper -->
+    </ul>
+   <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->

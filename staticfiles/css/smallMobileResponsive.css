@@ -34,8 +34,8 @@
     padding: 55px 10px;
   }
   .eachSpecialization img {
-    width: 180px;
-    height: 150px;
+    width: 330px;
+    height: 220px;
   }
   .completeHomeInterior .left img {
     width: 300px;
@@ -45,7 +45,8 @@
   }
 
   .toggle-box-content .categoricalImages img {
-    height: 110px;
+    height: 220px;
+    width: 320px;
   }
   .wrapperBox .box a img {
     width: 160px;
@@ -66,7 +67,7 @@
     padding: 5vh 10vw;
   }
   .completeHomeInterior .right ol li h4 {
-    width: 100vw !important;
+    width: 78vw !important;
   }
   .completeHomeInterior .right .contactDesignerButton {
     margin-top: 10vh !important;
@@ -74,8 +75,8 @@
 }
 @media screen and (max-width: 360px) {
   .eachSpecialization img {
-    height: 120px;
-    width: 150px;
+    height: 220px;
+    width: 330px;
   }
   .completeHomeInterior .right ol li h4 {
     width: 75vw;

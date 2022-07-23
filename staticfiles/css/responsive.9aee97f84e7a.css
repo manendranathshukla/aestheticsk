@@ -1,0 +1,368 @@
+@media screen and (min-width: 1000px) {
+  .mobile-form {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+
+  /* MobileForm Responsive Version */
+  .mobile-form .meetDesignerForm {
+    display: block;
+    width: 100vw;
+    margin-left: 0;
+    padding: 5vh 10vw;
+    height: 100vh;
+  }
+
+  .mobile-form .meetDesignerForm input {
+    width: 75vw;
+  }
+
+  .mobile-form .meetDesignerForm button {
+    width: 75vw;
+    margin-left: 0vw;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .navbar-logo {
+    margin-right: 15vw;
+  }
+
+  div.hire-us {
+    margin-left: -3vw;
+  }
+
+  div.hire-us li {
+    margin-top: 10px;
+  }
+
+  /* Navbar */
+  .menus {
+    display: none;
+  }
+
+  /* New Navbar */
+  .new-nav {
+    height: 75px;
+  }
+
+  .menus-under-nav {
+    display: none;
+  }
+
+  .new-nav img {
+    width: 200px;
+    margin-top: -50px;
+  }
+
+  /* New Banner */
+  .meetDesignerForm {
+    display: none;
+  }
+
+  .servicesProvided {
+    margin-top: -200px;
+    width: 90%;
+    margin-left: -12px;
+  }
+
+  .hire-us {
+    width: 80vw;
+    margin-top: 20px;
+  }
+
+  /* Here's what we can do on Aesthetics */
+  .what-we-can-do {
+    padding: 10vh 1vw;
+  }
+
+  .what-we-can-do h1 {
+    font-size: 38px;
+  }
+
+  .what-we-can-do .options {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+
+  .options {
+    padding: 15px 20px;
+  }
+
+  .options li {
+    margin-top: 15px;
+  }
+
+  .options li a img {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+  }
+
+  .options li a {
+    font-size: 15px;
+    padding: 30px 25px;
+  }
+
+  /* BannerHead */
+  .wrapperForHeader .meetDesignerForm {
+    display: none;
+  }
+
+  .bannerHead {
+    background-position: 50%;
+  }
+
+  .bestPrices {
+    margin-top: 100px;
+    margin-left: 50px;
+  }
+
+  .servicesProvided label {
+    /* width: 110%; */
+    padding: 2vh 2vw;
+    margin-top: 225px;
+    font-size: 14px;
+  }
+
+  .bestPrices h1 {
+    font-size: 28px;
+  }
+
+  .bestPrices h4 {
+    font-size: 24px;
+    margin-top: -10px;
+    font-weight: 400;
+  }
+
+  /* MeetDesignerForm */
+  .meetDesignerForm form {
+    width: 75vw;
+  }
+
+  .meetDesignerForm form button {
+    width: 85vw;
+    margin: auto;
+    margin-left: -25px;
+    margin-top: 10px;
+  }
+
+  /* What we can do */
+  .what-we-can-do .options {
+    display: none;
+  }
+
+  .mobile-responsive-options {
+    display: grid;
+    margin-top: 50px;
+    grid-template-columns: auto auto;
+  }
+
+  .mobile-responsive-options li {
+    list-style: none;
+  }
+
+  .mobile-responsive-options li a img {
+    width: 45px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .mobile-responsive-options li a {
+    display: flex;
+    flex-direction: column;
+    font-family: "Joan", serif;
+    color: grey;
+    font-size: 14px;
+  }
+
+  /* Why Aesthetics */
+  .eachPoint {
+    border: none;
+    padding: 15px 15px;
+  }
+
+  .eachPoint4 {
+    /* margin-left: 50px; */
+  }
+
+  .aestheticsPoints {
+    border: none;
+  }
+
+  .eachPoint img {
+    width: 85px;
+    height: 85px;
+  }
+
+  .aestheticsPoints {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+
+  /* Meet your designer */
+  .meetYourDesigner {
+    flex-direction: column;
+    padding: 25px 10px;
+  }
+
+  .mobile-responsive-version {
+    display: block;
+    width: 250px;
+    margin-top: 25px;
+  }
+
+  .meetYourDesigner .left label {
+    margin-top: 25px;
+  }
+
+  .meetYourDesigner .left p {
+    margin-top: 10px;
+    width: 80vw;
+  }
+
+  .meetYourDesigner .right {
+    display: none;
+  }
+
+  /* Short Specials */
+  .shortSpecials {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 15px 10px;
+  }
+
+  .shortSpecials .item1 {
+    grid-row: 1 / 4;
+  }
+
+  .item1 img {
+    width: 60px;
+  }
+
+  .shortTexts {
+    padding: 1px 5px;
+    border: none;
+  }
+
+  .shortTexts h3 {
+    font-size: 16px;
+  }
+
+  .shortTexts h4 {
+    font-size: 12px;
+  }
+
+  /* Browse Ideas by Rooms */
+  .wrapperBox {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+
+  /* We are specialized in */
+  .dealsIn {
+    padding: 10px 5px;
+  }
+
+  .specializations {
+    display: flex;
+    grid-template-columns: auto auto;
+    flex-direction: column-reverse;
+  }
+
+  .eachSpecialization img {
+    height: 150px;
+    width: 250px;
+  }
+
+  /* Complete Home Interior */
+  .completeHomeInterior {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* .completeHomeInterior .left img {
+    height: 200px;
+  } */
+  .completeHomeInterior .left {
+    display: none;
+  }
+
+  .completeHomeInterior .right {
+    width: 100vw;
+    padding: 50px 25px;
+    margin-top: 25px;
+  }
+
+  .completeHomeInterior .right h3 {
+    font-size: 22px;
+  }
+
+  /* End to End Interior Solution */
+  .categories {
+    display: grid;
+    grid-template-columns: auto auto auto;
+  }
+
+  /* Look at our Trending Designs */
+  .projects {
+    width: 100vw;
+  }
+
+  .categoricalImages {
+    display: flex;
+    grid-template-columns: auto auto;
+    flex-direction: column;
+  }
+
+  .toggle-box-content {
+    margin-left: -28% !important;
+  }
+
+  .toggle-box-content .categoricalImages img {
+    height: 150px;
+  }
+
+  /* Footer */
+  .addressMap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .map iframe {
+    width: 90vw;
+  }
+
+  .headquarters {
+    margin-top: 25px;
+  }
+
+  .lower {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .lower .socialMedia {
+    margin-top: 15px;
+  }
+
+  .lower .contact {
+    margin-top: 15px;
+  }
+
+  li.shortTexts.item1 {
+    width: 50vw;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .navbar-logo {
+    margin-right: 35vw;
+  }
+}

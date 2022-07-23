@@ -1,0 +1,186 @@
+@import url("https://fonts.googleapis.com/css2?family=Joan&display=swap");
+.header-bedroom {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 80vh;
+  width: 98.85vw;
+  text-align: center;
+  font-family: "Joan", serif;
+}
+.header-bedroom img {
+  width: 200px;
+}
+.header-bedroom h1 {
+  font-size: 48px;
+  color: white;
+}
+.header-bedroom h4 {
+  font-size: 16px;
+  color: white;
+}
+.header-bedroom label {
+  font-family: "Joan", serif;
+  font-size: 22px;
+}
+.header-bedroom h6 {
+  margin-top: 20vh;
+  color: black;
+}
+.header-bedroom .button-for-meet {
+  font-family: "Joan", serif;
+  background-color: #009e60;
+  padding: 12px 30px;
+  margin-top: 10px !important;
+  color: white;
+  border-radius: 5px;
+  border: none;
+}
+.header-bedroom .button-for-meet a {
+  font-family: "Joan", serif;
+  font-size: 18px;
+  color: white;
+  text-decoration: none;
+}
+.header-bedroom .button-for-meet:hover {
+  transition: 1s;
+  transform: scale(1.05);
+}
+.main-image {
+  padding: 10vh 5vw;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-row-gap: 5vh;
+}
+.show-image {
+  position: relative;
+}
+.main-image .show-image img {
+  width: 100%;
+  height: auto;
+}
+.main-image .show-image img:hover {
+  opacity: 0.2;
+}
+.show-image .send-button img {
+  height: 40px;
+  width: 40px;
+  /* filter: grayscale(100%); */
+}
+.show-image .send-button img:hover {
+  transform: scale(1.02);
+  transition: 0.5s;
+  opacity: 1;
+}
+.show-image .wrapper-for-hovered-div {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  top: 60px;
+  left: 90px;
+  display: none;
+}
+.show-image .wrapper-for-hovered-div p {
+  font-family: "Joan", serif;
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+  line-height: 10px;
+  margin-top: 10px;
+}
+.show-image:hover .wrapper-for-hovered-div {
+  display: block;
+}
+.form-for-meet {
+  position: fixed;
+  top: 20vh;
+  left: 35vw;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: "Joan", serif;
+  width: 400px;
+  background-color: #028f56e5;
+  padding: 50px 10px;
+  display: none;
+}
+.form-div {
+  display: flex;
+  flex-direction: column;
+}
+.form-for-meet h1 {
+  font-size: 20px;
+  color: white;
+}
+.form-for-meet h4 {
+  font-size: 16px;
+  color: white;
+}
+.form-div input {
+  border: none;
+  border-bottom: solid 0.5px white;
+  margin-top: 10px;
+  width: 250px;
+  margin-left: 70px;
+  background: transparent;
+}
+.form-div input::placeholder {
+  font-family: "Joan", serif;
+  font-size: 16px;
+  background: transparent;
+  color: white;
+}
+.form-div button {
+  background-color: white;
+  color: #009e60;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: none;
+  width: 250px;
+  margin-left: 70px;
+}
+.form-div button i {
+  margin-right: 15px;
+}
+.form-div button:hover {
+  transition: 0.5s;
+  transform: scale(1.02);
+  cursor: pointer;
+}
+.form-for-meet a {
+  margin-top: 20px !important;
+  color: white;
+  font-family: "Joan", serif;
+  font-size: 14px;
+}
+@media screen and (max-width: 820px) {
+  .main-image {
+    display: flex;
+    grid-template-columns: auto auto;
+    flex-direction: column;
+  }
+  .show-image .wrapper-for-hovered-div {
+    top: 10px;
+    left: 20px;
+  }
+  .show-image .wrapper-for-hovered-div p {
+    font-size: 12px;
+  }
+  .show-image .send-button img {
+    height: 30px;
+    width: 30px;
+  }
+  .form-for-meet {
+    top: 10vh;
+    left: 10vw;
+  }
+}
+@media screen and (max-width: 400px) {
+  .form-for-meet {
+    left: 0;
+    padding: 10vh 0vw;
+  }
+}

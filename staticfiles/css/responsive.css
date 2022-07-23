@@ -5,6 +5,7 @@
 }
 
 @media screen and (max-width: 1000px) {
+
   /* MobileForm Responsive Version */
   .mobile-form .meetDesignerForm {
     display: block;
@@ -13,9 +14,11 @@
     padding: 5vh 10vw;
     height: 100vh;
   }
+
   .mobile-form .meetDesignerForm input {
     width: 75vw;
   }
+
   .mobile-form .meetDesignerForm button {
     width: 75vw;
     margin-left: 0vw;
@@ -26,26 +29,33 @@
   body {
     overflow-x: hidden;
   }
+
   .navbar-logo {
     margin-right: 15vw;
   }
+
   div.hire-us {
     margin-left: -3vw;
   }
+
   div.hire-us li {
     margin-top: 10px;
   }
+
   /* Navbar */
   .menus {
     display: none;
   }
+
   /* New Navbar */
   .new-nav {
     height: 75px;
   }
+
   .menus-under-nav {
     display: none;
   }
+
   .new-nav img {
     width: 200px;
     margin-top: -50px;
@@ -55,41 +65,51 @@
   .meetDesignerForm {
     display: none;
   }
+
   .servicesProvided {
     margin-top: -200px;
     width: 90%;
     margin-left: -12px;
   }
+
   .hire-us {
     width: 80vw;
     margin-top: 20px;
   }
+
   /* Here's what we can do on Aesthetics */
   .what-we-can-do {
     padding: 10vh 1vw;
   }
+
   .what-we-can-do h1 {
     font-size: 38px;
   }
+
   .what-we-can-do .options {
     display: grid;
     grid-template-columns: auto auto;
   }
+
   .options {
     padding: 15px 20px;
   }
+
   .options li {
     margin-top: 15px;
   }
+
   .options li a img {
     width: 25px;
     height: 25px;
     margin-right: 5px;
   }
+
   .options li a {
     font-size: 15px;
     padding: 30px 25px;
   }
+
   /* BannerHead */
   .wrapperForHeader .meetDesignerForm {
     display: none;
@@ -106,8 +126,9 @@
 
   .servicesProvided label {
     /* width: 110%; */
-    padding: 1vh 2vw;
-    margin-top: 300px;
+    padding: 2vh 2vw;
+    margin-top: 225px;
+    font-size: 14px;
   }
 
   .bestPrices h1 {
@@ -131,23 +152,28 @@
     margin-left: -25px;
     margin-top: 10px;
   }
+
   /* What we can do */
   .what-we-can-do .options {
     display: none;
   }
+
   .mobile-responsive-options {
     display: grid;
     margin-top: 50px;
     grid-template-columns: auto auto;
   }
+
   .mobile-responsive-options li {
     list-style: none;
   }
+
   .mobile-responsive-options li a img {
     width: 45px;
     margin-top: 15px;
     margin-bottom: 15px;
   }
+
   .mobile-responsive-options li a {
     display: flex;
     flex-direction: column;
@@ -155,45 +181,56 @@
     color: grey;
     font-size: 14px;
   }
+
   /* Why Aesthetics */
   .eachPoint {
     border: none;
     padding: 15px 15px;
   }
+
   .eachPoint4 {
     /* margin-left: 50px; */
   }
+
   .aestheticsPoints {
     border: none;
   }
+
   .eachPoint img {
     width: 85px;
     height: 85px;
   }
+
   .aestheticsPoints {
     display: grid;
     grid-template-columns: auto auto;
   }
+
   /* Meet your designer */
   .meetYourDesigner {
     flex-direction: column;
     padding: 25px 10px;
   }
+
   .mobile-responsive-version {
     display: block;
     width: 250px;
     margin-top: 25px;
   }
+
   .meetYourDesigner .left label {
     margin-top: 25px;
   }
+
   .meetYourDesigner .left p {
     margin-top: 10px;
     width: 80vw;
   }
+
   .meetYourDesigner .right {
     display: none;
   }
+
   /* Short Specials */
   .shortSpecials {
     display: grid;
@@ -221,24 +258,27 @@
   .shortTexts h4 {
     font-size: 12px;
   }
+
   /* Browse Ideas by Rooms */
   .wrapperBox {
     display: grid;
     grid-template-columns: auto auto;
   }
+
   /* We are specialized in */
   .dealsIn {
     padding: 10px 5px;
   }
 
   .specializations {
-    display: grid;
+    display: flex;
     grid-template-columns: auto auto;
+    flex-direction: column-reverse;
   }
 
   .eachSpecialization img {
-    height: 150px;
-    width: 250px;
+    height: 220px;
+    width: 330px;
   }
 
   /* Complete Home Interior */
@@ -259,6 +299,7 @@
     padding: 50px 25px;
     margin-top: 25px;
   }
+
   .completeHomeInterior .right h3 {
     font-size: 22px;
   }
@@ -275,8 +316,9 @@
   }
 
   .categoricalImages {
-    display: grid;
+    display: flex;
     grid-template-columns: auto auto;
+    flex-direction: column;
   }
 
   .toggle-box-content {
@@ -313,10 +355,12 @@
   .lower .contact {
     margin-top: 15px;
   }
+
   li.shortTexts.item1 {
     width: 50vw;
   }
 }
+
 @media screen and (max-width: 820px) {
   .navbar-logo {
     margin-right: 35vw;

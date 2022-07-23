@@ -1,0 +1,87 @@
+@media screen and (max-width: 400px) {
+  body {
+    overflow-x: hidden !important;
+  }
+  .wrapperForHeader {
+    padding: 50px 10px;
+  }
+  .bestPrices {
+    margin-left: 10px;
+  }
+  .servicesProvided {
+    width: 95%;
+    margin-left: -10px;
+  }
+  .shortSpecials {
+    padding: 35px 10px;
+  }
+  .shortSpecials .item1 img {
+    width: 120px;
+  }
+  .shortTexts {
+    text-align: left;
+  }
+  .shortTexts h3 {
+    font-size: 14px;
+  }
+  .shortTexts h4 {
+    font-size: 12px;
+  }
+  .about-us {
+    padding: 65px 15px;
+  }
+  .dealsIn {
+    padding: 55px 10px;
+  }
+  .eachSpecialization img {
+    width: 180px;
+    height: 150px;
+  }
+  .completeHomeInterior .left img {
+    width: 300px;
+  }
+  .toggle-box-content {
+    margin-left: -28% !important;
+  }
+
+  .toggle-box-content .categoricalImages img {
+    height: 110px;
+  }
+  .wrapperBox .box a img {
+    width: 160px;
+    height: 160px;
+  }
+  .shortSpecials .item1 {
+    border-right: solid 0.5px grey;
+  }
+  .shortSpecials .item1 img {
+    width: 50px;
+  }
+  .shortSpecials .item1 label {
+    width: 55%;
+    margin-left: 60px;
+    margin-top: 15px;
+  }
+  .completeHomeInterior .right {
+    padding: 5vh 10vw;
+  }
+  .completeHomeInterior .right ol li h4 {
+    /* width: 100vw !important; */
+  }
+  .completeHomeInterior .right .contactDesignerButton {
+    margin-top: 10vh !important;
+  }
+}
+@media screen and (max-width: 360px) {
+  .eachSpecialization img {
+    height: 120px;
+    width: 150px;
+  }
+  .completeHomeInterior .right ol li h4 {
+    width: 75vw;
+  }
+  .wrapperBox .box a img {
+    height: 135px;
+    width: 135px;
+  }
+}

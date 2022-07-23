@@ -1,0 +1,831 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Style+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Joan&display=swap");
+* {
+  margin: auto;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+  scroll-behavior: smooth;
+  
+}
+/* New Navbar bootstrap */
+nav.navbar {
+  padding: 2vh 5vw;
+}
+.nav-link {
+  font-family: "Joan", serif;
+  color: #009e60 !important;
+}
+.nav-link:hover {
+  background-color: rgba(211, 211, 211, 0.445);
+}
+.dropdown-item {
+  font-family: "Joan", serif;
+  color: #009e60 !important;
+}
+.form-control {
+  font-family: "Joan", serif;
+  border: none !important;
+  border-bottom: solid 0.5px grey !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+.form-button {
+  color: rgb(95, 95, 95) !important;
+  border: none !important;
+  background: transparent !important;
+}
+.navbar-logo {
+  width: 100px;
+  height: auto;
+}
+.nav-link i {
+  background: #009e60;
+  padding: 10px 10px;
+  border-radius: 50%;
+  color: white;
+  margin-right: 10px;
+}
+
+/* New Nav */
+/* .new-nav {
+  display: flex;
+  flex-direction: column;
+  height: 14vh;
+  border-bottom: 0.5px solid grey;
+}
+.new-nav img {
+  width: 12vw;
+  height: auto;
+  margin-top: -5vh;
+  padding-bottom: 3vh;
+}
+.menus-under-nav {
+  display: flex;
+  list-style: none;
+  color: black;
+  /* padding-bottom: 2vh; */
+/* margin-top: -2vh; */
+/* }
+.menus-under-nav li {
+  padding: 10px 10px;
+  /* margin-top: -5vh; */
+/* }
+.menus-under-nav li a {
+  font-family: "Joan", serif;
+  color: #009e60;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.menus-under-nav li a:hover {
+  opacity: 0.8;
+}  */
+/* Old Nav */
+/* .nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+  background: white;
+  height: 90px;
+  overflow-x: hidden;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 9999;
+}
+.menus {
+  margin-top: 30px;
+}
+.menus a {
+  margin-left: 20px;
+  font-family: "Rubik", sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: green;
+  font-weight: 400;
+  font-size: 14px;
+  margin-top: -40px;
+}
+a.call {
+  color: white;
+  background: #009e60;
+  padding: 10px 20px;
+}
+i.fa-phone {
+  font-size: 18px;
+  margin-right: 10px;
+}
+.logo {
+  height: 150px;
+  width: auto;
+  margin-top: -20px;
+} */
+/** carousel **/
+.simple-carousel {
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto 0 auto;
+  border-radius: 4px;
+  height: 100vh !important;
+  overflow-x: hidden;
+  /* margin-top:-60px; */
+  /* Carousel Heigth [now is full screen]*/
+}
+
+.simple-carousel ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.simple-carousel ul li.slide {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  background: #ccc;
+  text-align: center;
+  line-height: 300px;
+  background-size: cover;
+  background-position: center;
+}
+
+.simple-carousel ul li.slide.active {
+  opacity: 1;
+}
+
+.simple-carousel a.control_prev,
+a.control_next {
+  position: absolute;
+  top: 40%;
+  z-index: 999;
+  display: block;
+  padding: 5em 2em;
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.simple-carousel a.control_prev:hover,
+a.control_next:hover {
+  opacity: 1;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.simple-carousel a.control_prev {
+  left: 0;
+  border-radius: 0 2px 2px 0;
+}
+
+.simple-carousel a.control_next {
+  right: 0;
+  border-radius: 2px 0 0 2px;
+}
+/* BannerHead */
+.bannerHead {
+  height: 100vh;
+  margin-top: -10vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-origin: border-box;
+}
+.wrapperForHeader {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10vh;
+}
+.bestPrices {
+  margin-top: 20vh;
+  font-family: "Manrope", sans-serif;
+
+  text-align: left;
+  color: #00462a;
+}
+.bestPrices h2 {
+  font-weight: 500;
+  font-size: 48px;
+}
+.bestPrices h4 {
+  font-size: 32px;
+  width: 350px;
+  margin-top: 50px;
+}
+.servicesProvided label {
+  background-color: #009e60;
+  padding: 10px 20px;
+  height: 45px;
+  margin-top: 50px;
+  color: white;
+  border-radius: 5px;
+}
+
+/* Meet Designer Form */
+.meetDesignerForm {
+  display: flex;
+  flex-direction: column;
+  /* background-color: #113350; */
+  background-color: #00462a;
+  padding: 40px 30px;
+  text-align: left;
+  height: 100vh;
+  margin-right: 0vw;
+  width: 30vw;
+  font-family: "Manrope", sans-serif;
+}
+.meetDesignerForm h1 {
+  color: white;
+  margin-top: 5vh;
+  font-size: 34px;
+  font-weight: 600;
+  margin-left: 2vw;
+}
+.meetDesignerForm h2 {
+  font-size: 30px;
+  color: white;
+  font-family: "Joan", serif;
+  margin-top: 2vh;
+  margin-left: 2vw;
+}
+.meetDesignerForm form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.meetDesignerForm form input {
+  height: 40px;
+  width: 22vw;
+  margin-left: 0px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-bottom: solid 1px grey;
+}
+.meetDesignerForm form input::placeholder {
+  font-size: 12px;
+}
+.meetDesignerForm form button {
+  /* background-color: #0066c3; */
+  background-color: #009e60;
+  color: white;
+  text-transform: capitalize;
+  font-weight: 500;
+  border: none;
+  margin-top: 10px;
+  /* border-radius:5px; */
+  padding: 10px 20px;
+  width: 100%;
+  font-size: 14px;
+  /* margin-left:-50px; */
+}
+.banner-social-media-icons a i {
+  color: white;
+  border: solid 1.5px white;
+  border-radius: 50%;
+  padding: 10px 10px;
+}
+.banner-social-media-icons a i:hover {
+  color: white;
+  background: #009e60;
+  border: solid 1.5px #009e60;
+  transition: 0.5s;
+}
+.hire-us {
+  margin-top: 20vh;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  font-weight: 500;
+  list-style: none;
+  width: 50vw;
+}
+.hire-us li {
+  border-radius: 10px;
+  border: solid 1px white;
+  padding: 5px 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.hire-us li:hover {
+  background: #00462a;
+  border: solid 1px #00462a;
+}
+/* What we can do on Aesthetics */
+.mobile-responsive-options {
+  display: none;
+}
+.what-we-can-do {
+  padding: 10vh 10vw;
+  text-align: center;
+}
+.what-we-can-do h1 {
+  font-size: 32px;
+  /* font-family: 'Manrope', sans-serif; */
+  font-family: "Joan", serif;
+}
+.options {
+  list-style: none;
+  display: flex;
+  margin-top: 10vh;
+}
+.options img {
+  height: 40px;
+  width: 40px;
+  margin-right: 15px;
+}
+.options li a {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  background: rgba(211, 211, 211, 0.378);
+  padding: 35px 25px;
+  font-weight: 500;
+  font-size: 15px;
+  border-radius: 5px;
+}
+@media screen and (max-width: 1345px) {
+  .what-we-can-do .options li {
+    display: flex;
+    flex-direction: column !important;
+  }
+}
+
+/* .whyAesthetics */
+.whyAesthetics {
+  /* font-family: 'Manrope',sans-serif; */
+  font-family: "Joan", serif;
+  padding: 10vh 0vw;
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+}
+.whyAesthetics h1 {
+  font-size: 24px;
+  font-weight: 600;
+}
+.aestheticsPoints {
+  list-style: none;
+  display: flex;
+  /* padding-top:5vh; */
+  background-color: #009e5f05;
+  border-top: solid 0.25px lightgrey;
+  border-bottom: solid 0.25px lightgrey;
+  margin-top: 2vh;
+}
+.eachPoint {
+  display: flex;
+  flex-direction: column;
+  padding: 5vh 5vw;
+  border-right: solid 0.25px lightgrey;
+}
+.eachPoint:last-child {
+  border: none;
+}
+.eachPoint img {
+  height: 110px;
+}
+.eachPoint label {
+  font-size: 14px;
+  color: grey;
+  margin-top: 15px;
+  font-weight: 400;
+}
+/* Meet Your Designer */
+.meetYourDesigner {
+  display: flex;
+  margin-top: -10vh;
+}
+.meetYourDesigner .left {
+  text-align: center;
+}
+.meetYourDesigner .left h1 {
+  color: #009e60;
+  font-family: "Joan", serif;
+}
+.meetYourDesigner .left label {
+  font-family: "Joan", serif;
+  font-weight: bold;
+}
+.meetYourDesigner p {
+  width: 65%;
+  margin-top: 5vh;
+  color: rgba(128, 128, 128, 0.832);
+  text-align: justify;
+}
+.mobile-responsive-version {
+  display: none;
+}
+/* short specials */
+.shortSpecials {
+  display: flex;
+  /* margin-top: -10vh; */
+  list-style: none;
+  background: rgba(211, 211, 211, 0.364);
+  font-family: "Manrope", sans-serif;
+  padding: 2vh 20vw;
+}
+.shortTexts img {
+  width: 35px;
+}
+.item1 {
+  display: flex !important;
+  font-size: 12px;
+}
+.shortTexts {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  text-align: center;
+  border-right: 1px solid grey;
+  padding-right: 55px;
+}
+.shortTexts:last-child,
+.shortTexts:first-child {
+  border: none;
+}
+.shortTexts h3 {
+  font-size: 17px;
+  font-weight: 500;
+  color: #009e60;
+}
+.shortTexts h4 {
+  font-size: 16px;
+  font-weight: 400;
+  color: black;
+  margin-top: -5px;
+  text-align: left;
+}
+/* About Us  */
+
+.about-us,
+.our-services {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background: whitesmoke;
+  padding: 10vh 15vw;
+}
+.about-us h1,
+.our-services h1 {
+  font-weight: 400;
+  font-size: 24px;
+  font-family: "Joan", serif;
+  text-transform: uppercase;
+}
+.about-us p {
+  font-weight: 300;
+  margin-top: 5vh;
+}
+.categories {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  grid-gap: 50px;
+  margin-top: 5vh;
+  font-weight: 300;
+}
+.our-services {
+  padding: 10vh 3vw;
+  background-color: rgba(128, 128, 128, 0.088);
+}
+.our-services h1 {
+  font-size: 22px;
+}
+.top img {
+  height: 80px;
+  width: 80px;
+}
+.middle label {
+  font-size: 16px;
+  text-transform: capitalize;
+  margin-top: 5px;
+  font-weight: 300;
+}
+.bottom {
+  margin-top: 2vh;
+  width: 80%;
+  text-align: center;
+}
+.projects {
+  background: white;
+  width: 100vh;
+  text-align: center;
+  padding: 10vh 15vw;
+}
+.projects h2 {
+  text-transform: uppercase;
+  font-weight: 200;
+}
+/* We deal in */
+.dealsIn {
+  padding: 10vh 5vw;
+  text-align: center;
+}
+.dealsIn h1 {
+  font-size: 24px;
+  /* font-family: 'Manrope',sans-serif; */
+  font-family: "Joan", serif;
+  font-weight: 600;
+}
+.specializations {
+  display: grid;
+  margin-top: 55px;
+  grid-template-columns: auto auto auto auto;
+  list-style: none;
+  grid-gap: 10px;
+}
+.eachSpecialization {
+  display: flex;
+  flex-direction: column;
+}
+.eachSpecialization img {
+  height: 180px;
+  border-radius: 5px;
+}
+.eachSpecialization label {
+  color: grey;
+  font-size: 14px;
+  margin-top: 10px;
+}
+/* Complete Home Interior */
+
+.completeHomeInterior {
+  border-top: solid 0.5px rgba(128, 128, 128, 0.203);
+  background-color: white;
+  display: flex;
+  font-family: "Manrope", sans-serif !important;
+  align-items: center;
+}
+/* .completeHomeInterior .left img{
+    height: 180px;
+} */
+.completeHomeInterior .right {
+  width: 50%;
+}
+.completeHomeInterior .right h3 {
+  font-weight: 400;
+  font-size: 24px;
+}
+.completeHomeInterior .right ol {
+  margin-top: 30px;
+}
+.completeHomeInterior .right ol li {
+  margin-top: 15px;
+}
+.completeHomeInterior .right ol li h3 {
+  color: #009e60;
+  font-size: 20px;
+  font-weight: 500;
+}
+.completeHomeInterior .right ol li h4 {
+  font-weight: 200;
+  color: grey;
+  font-size: 17px;
+  /* padding-right: 150px; */
+}
+.contactDesignerButton {
+  background-color: #009e60;
+  color: white;
+  text-transform: uppercase;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10vh;
+  margin-left: 2vw;
+}
+.contactDesignerButton:hover {
+  background-color: white;
+  color: #009e5fd2;
+  border: solid 0.5px #009e60;
+  text-decoration: none;
+}
+/* Book Free Design Session
+.bookDesignSession{
+text-align:center;
+margin-top: 5vh;
+padding-bottom:10vh;
+}
+.bookDesignSession a{
+    background-color:#009E60;
+    color:white;
+    text-transform: uppercase;
+    font-size: 16px;
+    padding:10px 20px;
+    border:none;
+    border-radius: 5px;
+}
+.bookDesignSession a:hover{
+    background-color: white;
+    color:#009e5fd2;
+    border:solid 0.5px #009E60;
+    text-decoration: none;
+} */
+/* Browse Ideas By Rooms */
+.browseByRooms {
+  /* background:#009e5f12; */
+  padding: 10vh 5vw;
+  font-family: "Joan", serif;
+}
+.browseByRooms h1 {
+  font-size: 24px;
+}
+.wrapperBox {
+  display: flex;
+}
+.wrapperBox .box {
+  display: flex;
+  box-shadow: 0px 6px 10px -1px rgba(0, 0, 0, 0.75);
+  flex-direction: column;
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 5vh;
+  margin-right: 1vw;
+}
+.wrapperBox .box:hover {
+  transition: 0.5s;
+  transform: translateY(-10px);
+}
+.wrapperBox .box a img {
+  height: 180px;
+  width: 180px;
+}
+.wrapperBox .box label {
+  color: grey;
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: 400;
+}
+/* what is aesthetics al about */
+.projects h2 {
+  font-size: 20px;
+  font-weight: 400;
+}
+.toggle-box {
+  display: none;
+}
+
+.toggle-box + label {
+  color: #555;
+  cursor: pointer;
+  display: block;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 23px;
+  padding: 0.3em 0 0.3em 26px;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.toggle-box + label + div {
+  display: none;
+  margin: 0 0 14px;
+}
+
+.toggle-box:checked + label:nth-child(n) + div {
+  display: block;
+}
+
+.toggle-box + label:before {
+  position: absolute;
+  content: "\f0fe";
+  font-family: FontAwesome;
+  top: 0.3em;
+  left: 0px;
+  color: black;
+}
+
+.toggle-box:checked + label {
+  color: black;
+}
+
+.toggle-box:checked + label:before {
+  content: "\f146";
+}
+
+.toggle-box-content {
+  width: 100vw;
+  margin-left: -207% !important;
+  background-color: white;
+  padding: 10vh 0vw;
+}
+.categoricalImages {
+  display: grid;
+  padding: 0vh 12vw;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
+  grid-gap: 20px;
+}
+.toggle-box-content .categoricalImages img {
+  height: 240px;
+  width: auto;
+}
+.eachProjects {
+  margin-top: 20px;
+}
+/* Reach Us */
+.addressMap {
+  display: flex;
+  padding: 5vh 5vw;
+  border-bottom: solid 0.5px rgba(128, 128, 128, 0.242);
+}
+.headquarters {
+  font-family: "Manrope", sans-serif;
+  padding-left: 5vw;
+  padding-right: 10vw;
+}
+.headquarters h1 {
+  font-size: 24px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.441);
+}
+.headquarters h3 {
+  color: #009e60;
+  font-size: 18px;
+}
+.headquarters label {
+  font-size: 16px;
+  font-weight: 500;
+}
+.headquarters span {
+  font-weight: 400;
+  font-size: 14px;
+  color: grey;
+}
+.headquarters i {
+  margin-right: 10px;
+  font-size: 18px;
+  color: #009e60;
+}
+/* footer */
+.footer {
+  font-family: "Manrope", sans-serif;
+  padding: 1vh 5vw;
+}
+.upper {
+  color: grey;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+.upper img {
+  height: 150px;
+  margin-top: -40px;
+}
+.upper p {
+  font-size: 14px;
+  font-weight: 200;
+  margin-top: -15px;
+}
+.lower {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5vh 0vw;
+  font-size: 14px;
+  color: rgba(85, 85, 85, 0.662);
+}
+.contact a {
+  text-decoration: none;
+  color: rgba(128, 128, 128, 0.641);
+  margin-left: 10px;
+}
+.contact a i {
+  margin-right: 5px;
+  color: #009e60;
+}
+.socialMedia a i {
+  color: #009e60;
+  font-size: 24px;
+  margin-right: 10px;
+}
+.stamp {
+  font-size: 12px;
+  padding: 2vh 0vw;
+  color: rgba(128, 128, 128, 0.659);
+  text-align: center;
+  font-weight: 400;
+  font-family: "Manrope", sans-serif;
+}
+.trendingBedroom h1 {
+  font-family: "Joan", serif !important;
+}
+.trendingBedroom .head {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.trendingBedroom .head a {
+  font-size: 14px;
+  font-family: "Joan", serif;
+  margin-right: 10px;
+  color: black;
+  cursor: pointer;
+}
