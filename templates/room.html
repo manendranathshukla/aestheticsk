@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon-16x16.png">
     <link rel="stylesheet" href="/static/css/style.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -178,7 +180,7 @@
             <a href="{{designer.instagram}}"><i class="fa fa-instagram"></i></a>
         </div>
         <h6>Explore our best {{myroom.name}} designs</h6>
-        <button class="button-for-meet"><a href="#">Meet our designer</a></button>
+        <button class="button-for-meet"><a href="/#designerDiv">Meet our designer</a></button>
     </div>
 
     <div class="main-image">
@@ -269,7 +271,7 @@
 <script>
     {% for msg in messages %}
     alertify.set('notifier', 'position', 'top-right');
-    alertify.{{ msg.tags }} ('{{msg}}');
+    alertify.{{ msg.tags }}('{{msg}}');
     {% endfor %}
 </script>
 

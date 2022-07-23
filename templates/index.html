@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/images/favicon-16x16.png">
     <link rel="stylesheet" href="static/css/style.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -155,13 +157,13 @@
 
 
     <div class="what-we-can-do">
-        <h1>Here's what we can do on Aesthetics</h1>
+        <h1>Here's what we can do on Aestheticsk</h1>
         <div class="options">
-            <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/900/900930.png?w=740" />Discover Design
+            <li><a href="#browseByIdea"><img src="https://cdn-icons-png.flaticon.com/512/900/900930.png?w=740" />Discover Design
                     Ideas</a></li>
-            <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1234/1234127.png?w=740" />Speak with
+            <li><a href="#contactUs"><img src="https://cdn-icons-png.flaticon.com/512/1234/1234127.png?w=740" />Speak with
                     Designers</a></li>
-            <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1140/1140665.png?w=740" />Book an
+            <li><a href="#meetDesigner"><img src="https://cdn-icons-png.flaticon.com/512/1140/1140665.png?w=740" />Book an
                     appointment</a></li>
             <li><a href="#"><img
                         src="https://cdn-icons-png.flaticon.com/512/1058/1058682.png?w=740&t=st=1655731171~exp=1655731771~hmac=0e96c3e11adb54e5dcedd51767ee596c5c7092f1d2f06853c82c1118a769bcc2" />Buy
@@ -170,11 +172,11 @@
                     products</a></li>
         </div>
         <div class="mobile-responsive-options">
-            <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/900/900930.png?w=740" />Discover Design
+            <li><a href="#browseByIdea"><img src="https://cdn-icons-png.flaticon.com/512/900/900930.png?w=740" />Discover Design
                     Ideas</a></li>
-            <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1234/1234127.png?w=740" />Speak with
+            <li><a href="#contactUs"><img src="https://cdn-icons-png.flaticon.com/512/1234/1234127.png?w=740" />Speak with
                     Designers</a></li>
-            <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1140/1140665.png?w=740" />Book an
+            <li><a href="#meetDesigner"><img src="https://cdn-icons-png.flaticon.com/512/1140/1140665.png?w=740" />Book an
                     appointment</a></li>
             <li><a href="#"><img
                         src="https://cdn-icons-png.flaticon.com/512/1058/1058682.png?w=740&t=st=1655731171~exp=1655731771~hmac=0e96c3e11adb54e5dcedd51767ee596c5c7092f1d2f06853c82c1118a769bcc2" />Buy
@@ -200,19 +202,20 @@
 
         </div>
     </div>
-    <div class="meetYourDesigner">
+    <div class="meetYourDesigner" id="designerDiv">
         <div class="left">
             <h1>Meet Our Designer</h1>
+            <img class="mobile-responsive-version" src="{{designer.profilePic}}">
             <label>{{designer.name}}</label>
             <p>{{designer.bio}}</p>
         </div>
         <div class="right">
-            <img src="{{designer.profilePic}}" height="100%" width="100%">
+            <img src="{{designer.profilePic}}">
         </div>
     </div>
     <div class="shortSpecials">
         <li class="shortTexts item1">
-            <img src="https://cdn-icons-png.flaticon.com/512/1190/1190876.png?w=740" /><label>Aesthetics Customer
+            <img src="https://res.cloudinary.com/aestheticsk-interiors2/image/upload/v1658391671/Services/satisfaction_bck9fp.png" /><label>Aesthetics Customer
                 Satisfaction</label>
         </li>
         <li class="shortTexts">
@@ -236,7 +239,7 @@
         <h1>About us</h1>
         <p>{{about.content}}</p>
     </div>
-    <div class="browseByRooms">
+    <div class="browseByRooms" id="browseByIdea">
         <h1>Browse Ideas by Rooms</h1>
         <div class="wrapperBox">
             {% for r in rooms %}
@@ -404,7 +407,7 @@
     <script>
         {% for msg in messages %}
         alertify.set('notifier', 'position', 'top-right');
-        alertify.{ { msg.tags } } ('{{msg}}');
+        alertify.{{ msg.tags }}('{{msg}}');
         {% endfor %}
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>

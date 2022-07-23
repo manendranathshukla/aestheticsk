@@ -209,9 +209,9 @@ def updateContact(request):
         return redirect('error')
 
 @login_required(login_url='/aesthetic/login')
-def updateDesigner(request,pk):
+def updateDesigner(request):
     if request.user.is_staff :
-        designer= Designer.objects.filter(id=pk)[0]
+        designer= Designer.objects.first()
         if(request.method == "POST"):
             name=request.POST['name']
             bio=request.POST['bio']
@@ -237,54 +237,54 @@ def updateDesigner(request,pk):
         return redirect('error')
 
 
-@login_required(login_url='/aesthetic/login')
-def addDesigner(request):
-    if request.user.is_staff :
-        if(request.method == "POST"):
-            name=request.POST['name']
-            bio=request.POST['bio']
-            profile=request.POST['profile']
-            linkedin=request.POST['linkedin']
-            facebook=request.POST['facebook']
-            twitter=request.POST['twitter']
-            instagram=request.POST['instagram']
-            youtube=request.POST['youtube']
-            designer.name=name
-            designer.bio=bio
-            designer.profilePic=profile
-            designer.linkedin=linkedin
-            designer.facebook=facebook
-            designer.instagram=instagram
-            designer.twitter=twitter
-            designer.youtube=youtube
-            Designer(name=name,bio=bio,profilePic=profile,linkedin=linkedin,facebook=facebook,instagram=instagram,twitter=twitter,youtube=youtube).save()
-            messages.success(request, 'New Designer Added Succesfully!')
-            return redirect("adminArea")
-        return render(request,"adminArea/addDesigner.html")
-    else:
-        return redirect('error')
+# @login_required(login_url='/aesthetic/login')
+# def addDesigner(request):
+#     if request.user.is_staff :
+#         if(request.method == "POST"):
+#             name=request.POST['name']
+#             bio=request.POST['bio']
+#             profile=request.POST['profile']
+#             linkedin=request.POST['linkedin']
+#             facebook=request.POST['facebook']
+#             twitter=request.POST['twitter']
+#             instagram=request.POST['instagram']
+#             youtube=request.POST['youtube']
+#             designer.name=name
+#             designer.bio=bio
+#             designer.profilePic=profile
+#             designer.linkedin=linkedin
+#             designer.facebook=facebook
+#             designer.instagram=instagram
+#             designer.twitter=twitter
+#             designer.youtube=youtube
+#             Designer(name=name,bio=bio,profilePic=profile,linkedin=linkedin,facebook=facebook,instagram=instagram,twitter=twitter,youtube=youtube).save()
+#             messages.success(request, 'New Designer Added Succesfully!')
+#             return redirect("adminArea")
+#         return render(request,"adminArea/addDesigner.html")
+#     else:
+#         return redirect('error')
 
 
 
-@login_required(login_url='/aesthetic/login')
-def viewDesigners(request):
-    if request.user.is_staff :
-        designers=Designer.objects.all()
-        return render(request,"adminArea/designers.html",{"designers":designers})
-    else:
-        return redirect('error')
+# @login_required(login_url='/aesthetic/login')
+# def viewDesigners(request):
+#     if request.user.is_staff :
+#         designers=Designer.objects.all()
+#         return render(request,"adminArea/designers.html",{"designers":designers})
+#     else:
+#         return redirect('error')
 
 
 
 
-@login_required(login_url='/aesthetic/login')
-def delDesigner(request,pk):
-    if request.user.is_staff :
-        Designer.objects.filter(id=pk)[0].delete()
-        messages.success(request,"Designer Deleted Succesfully!")
-        return redirect(request.META.get('HTTP_REFERER'))
-    else:
-        return redirect('error')
+# @login_required(login_url='/aesthetic/login')
+# def delDesigner(request,pk):
+#     if request.user.is_staff :
+#         Designer.objects.filter(id=pk)[0].delete()
+#         messages.success(request,"Designer Deleted Succesfully!")
+#         return redirect(request.META.get('HTTP_REFERER'))
+#     else:
+#         return redirect('error')
 
 
 
@@ -483,7 +483,7 @@ def loginPage(request):
             messages.success(request, f' Welcome {username} !!')
             return redirect('adminArea')
         else:
-            messages.info(request, f'account done not exit plz sign in')
+            messages.error(request, f'account done not exit plz sign in')
     return render(request,"adminArea/login.html")
 
 def registerPage(request):

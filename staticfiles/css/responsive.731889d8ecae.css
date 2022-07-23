@@ -271,9 +271,8 @@
   }
 
   .specializations {
-    display: flex;
+    display: grid;
     grid-template-columns: auto auto;
-    flex-direction: column-reverse;
   }
 
   .eachSpecialization img {

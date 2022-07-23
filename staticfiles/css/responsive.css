@@ -228,7 +228,7 @@
   }
 
   .meetYourDesigner .right {
-    display: block;
+    display: none;
   }
 
   /* Short Specials */
@@ -271,8 +271,9 @@
   }
 
   .specializations {
-    display: grid;
+    display: flex;
     grid-template-columns: auto auto;
+    flex-direction: column-reverse;
   }
 
   .eachSpecialization img {

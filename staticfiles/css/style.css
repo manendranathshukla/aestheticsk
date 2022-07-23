@@ -5,6 +5,8 @@
   margin: auto;
   box-sizing: border-box;
   font-family: "Rubik", sans-serif;
+  scroll-behavior: smooth;
+  
 }
 /* New Navbar bootstrap */
 nav.navbar {
@@ -588,7 +590,7 @@ a.control_next:hover {
   font-weight: 200;
   color: grey;
   font-size: 17px;
-  padding-right: 150px;
+  /* padding-right: 150px; */
 }
 .contactDesignerButton {
   background-color: #009e60;
