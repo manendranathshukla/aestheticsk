@@ -11,65 +11,19 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Image Gallay</title>
+    <title>Admin Dashboard | WhyAestheticsk</title>
 
     <!-- Custom fonts for this template-->
     <link href="/static/adminArea/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="/static/adminArea/css/sb-admin-2.min.css" rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
     <!-- Default theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
     <!-- Custom styles for this template-->
     <link href="/static/adminArea/css/sb-admin-2.min.css" rel="stylesheet">
-    <style>
-        .container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-gap: 1rem;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .card {
-            color: #252a32;
-            border-radius: 2px;
-            background: #ffffff;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.24);
-        }
-
-        .card-image {
-            position: relative;
-            display: block;
-            width: 100%;
-
-            padding-top: 70%;
-            background: #ffffff;
-        }
-
-        .card-image img {
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        @media only screen and (max-width: 600px) {
-            .container {
-                display: grid;
-                grid-template-columns: 1fr;
-                grid-gap: 1rem;
-            }
-        }
-    </style>
 
 </head>
 
@@ -78,8 +32,8 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-     <!-- Sidebar -->
-     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+       <!-- Sidebar -->
+       <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/aesthetic/adminArea">
@@ -164,7 +118,7 @@
         </div>
 
     </ul>
-     <!-- Content Wrapper -->
+        <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
@@ -191,7 +145,8 @@
                             </div>
                         </div>
                     </form>
- <!-- Topbar Navbar -->
+
+               <!-- Topbar Navbar -->
  <ul class="navbar-nav ml-auto">
 
     <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -306,235 +261,148 @@
 
 </ul>
 
-
                 </nav>
                 <!-- End of Topbar -->
 
+
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    
+
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">{{room.name}} Designs</h1>
+                        <h1 class="h3 mb-0 text-gray-800"> WhyAestheticsk List</h1>
                         <!-- <button data-toggle="modal" data-target="#form"
                             class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-plus fa-sm text-white-50"></i> Add More Designs</button> -->
-                                <a href="/aesthetic/addRoomImage"
+                                <a href="/aesthetic/addWhyAestheticsk"
                                 class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                    class="fas fa-plus fa-sm text-white-50"></i> Add More Designs</a>
+                                    class="fas fa-plus fa-sm text-white-50"></i> Add WhyAestheticsk</a>
                     </div>
 
 
                     <div class="container-fluid">
 
-                       
-
-
-  <!-- DataTales Example -->
-  <div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Rooms Details</h6>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Image</th>
-                        <th>Is Featured</th>
-                        <th>Is Trending</th>
-                        <th>Mark As</th>
-                        <th>Action</th>
-
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th>Id</th>
-                        <th>Image</th>
-                        <th>Is Featured</th>
-                        <th>Is Trending</th>
-                        <th>Mark As</th>
-                        <th>Action</th>
-
-                    </tr>
-                </tfoot>
-                <tbody>
-                    <form method="post" action="">
-                        {% csrf_token %}
-                        {% for r in images %}
-                        <tr>
-                            <td>{{r.custom_id}}</td>
-                         
-                            <td><img src="{{r.image}}" height="100" width="120" /></td>
-
-                           
-                            <td>{{r.isFeatured}}</td>
-                            <td>{{r.isTrending}}</td>
-
-                            <td>
-                              
-                                 <input hidden name="featured" value="{{r.id}},0">
-                                <label for="featured">Featured</label>
-                                <input type="checkbox" id="featured" name="featured"
-                                value="{{r.id}},1"  {% if r.isFeatured %} checked  {% endif %}     >
-                                <input hidden name="trending" value="{{r.id}},0">
-                                <label for="featured">Trending</label>
-                                <input type="checkbox" id="featured" name="trending"
-                                    value="{{r.id}},1"      {% if r.isTrending %} checked{% endif %}   >
-
-
-                            </td>
-                            <!-- <td><a href="/aesthetic/viewRoomImages/{{r.id}}"
-                                class="btn btn-primary">Featured</a><a
-                                href="/aesthetic/delRoom/{{r.id}}"
-                                class="btn btn-secondary">Trending</a>
-                        </td> -->
-                            <td><a
-                                    href="/aesthetic/delRoomImage/{{r.id}}" class="btn btn-danger"><i
-                                        class="fa fa-trash" aria-hidden="true"></i></a>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                        <button class="btn btn-success" type="submit">Save</button>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
-
-
-                        <!-- <div class="container">
-                            {% for img in images %}
-                            <div class="card">
-                                <div class="card-image">
-                                    <a href="" data-fancybox="gallery" data-caption="Caption Images 1">
-                                        <img src="{{img.image}}" alt="Image Gallery" width="200" height="200">
-                                    </a>
-                                </div>
-                            </div>
-                            {% endfor %}
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <!-- <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Rooms Details</h6>
                         </div> -->
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Name</th>
+                                            <th>Icon Url</th>
+                                        
+                                            <th>Action</th>
 
-                    </div>
-                    <!-- /.container-fluid -->
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Name</th>
+                                            <th>Icon Url</th>
+                                
+                                            <th>Action</th>
 
-                </div>
-                <!-- End of Main Content -->
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                       
+                                            {% for r in whyAesth %}
+                                            <tr>
+                                                <td>{{r.id}}</td>
+                                                <td>{{r.name}}</td>
+                                               
 
-                <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Aestheticsk.com 2022</span>
-                        </div>
-                    </div>
-                </footer>
-                <!-- End of Footer -->
+                                                <td><img src="{{r.iconUrl}}" height="80" width="100" /></td>
 
-            </div>
-            <!-- End of Content Wrapper -->
-
-        </div>
-        <!-- End of Page Wrapper -->
-
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-        </a>
-
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="/aesthetic/logout">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header border-bottom-0">
-                        <h5 class="modal-title" id="exampleModalLabel">Add More Sample Image</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form method="post" action="aesthetic/addRoomImage/">
-                        {% csrf_token %}
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label for="Url">Image Url</label>
-                                <input type="text" class="form-control" name="imgUrl" id="url"
-                                    aria-describedby="emailHelp" placeholder="Enter image url">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" name="checks" class="custom-control-input" id="customCheck1"
-                                        value="showFeatured">
-                                    <label class="custom-control-label" for="customCheck1">Featured</label>
-                                </div>
-                                <input hidden name="roomid" value="{{r.id}}" />
-                               
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" name="checks" class="custom-control-input"
-                                        value="showTrending" id="customCheck2">
-                                    <label class="custom-control-label" for="customCheck2">Trending</label>
-                                </div>
-
+                                               
+                                               
+                                                <td><a href="/aesthetic/updateWhyAestheticsk/{{r.id}}"
+                                                        class="btn btn-primary"><i class="fa fa-edit"
+                                                            aria-hidden="true"></i></a> <a
+                                                        href="/aesthetic/delWhyAestheticsk/{{r.id}}" class="btn btn-danger"><i
+                                                            class="fa fa-trash" aria-hidden="true"></i></a>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                            
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="modal-footer border-top-0 d-flex justify-content-center">
-                            <button type="submit" class="btn btn-success">Submit</button>
-                        </div>
-                    </form>
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- End of Main Content -->
 
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Aestheticsk.com 2022</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="/aesthetic/logout">Logout</a>
                 </div>
             </div>
         </div>
-        <!-- Alertify JavaScript -->
-        <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-        <script>
-            {% for msg in messages %}
-            alertify.set('notifier', 'position', 'top-right');
-            alertify.{{msg.tags}}('{{msg}}');
-            {% endfor %}
-        </script>
+    </div>
+    <!-- Alertify JavaScript -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script>
+        {% for msg in messages %}
+        alertify.set('notifier', 'position', 'top-right');
 
-        <!-- Bootstrap core JavaScript-->
-        <script src="/static/adminArea/vendor/jquery/jquery.min.js"></script>
-        <script src="/static/adminArea/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        alertify.{{ msg.tags }} ('{{msg}}');
+        {% endfor %}
+    </script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="/static/adminArea/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/adminArea/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-        <!-- Core plugin JavaScript-->
-        <script src="/static/adminArea/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="/static/adminArea/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-        <!-- Custom scripts for all pages-->
-        <script src="/static/adminArea/js/sb-admin-2.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="/static/adminArea/js/sb-admin-2.min.js"></script>
 
-        <script>
-            // Fancybox Configuration
-            $('[data-fancybox="gallery"]').fancybox({
-                buttons: ["slideShow", "thumbs", "zoom", "fullScreen", "share", "close"],
-                loop: false,
-                protect: true
-            });
-
-        </script>
-
+   
 </body>
 
 </html>

@@ -19,9 +19,13 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
+from django.conf.urls import (
+handler400, handler403, handler404, handler500
+)
 urlpatterns = [
     path('marisomartclient/admin/', admin.site.urls),
     path('',include('app.urls')),
     path('', include('django.contrib.auth.urls')),
     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+handler404 = 'app.views.custom_page_not_found_view'

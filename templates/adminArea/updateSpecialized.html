@@ -11,7 +11,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Update Specialized Content</title>
+    {% if spclz %}
+
+    <title>Update Specialized</title>
+    {% else %}
+    <title>Add Specialized</title>
+    {% endif %}
+    
 
     <!-- Custom fonts for this template-->
     <link href="/static/adminArea/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -31,12 +37,32 @@
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
-
+                {% if spclz %}
 
 
                 <div class="p-5">
                     <div class="text-center">
                         <h1 class="h4 text-gray-900 mb-4">Update Specialized Content</h1>
+                    </div>
+                    <form class="user" action="/aesthetic/updateSpecialized/{{spclz.id}}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group ">
+                            <input type="text" name="name" value="{{spclz.name}}" class="form-control form-control-user" placeholder="Name">
+                        </div>
+                        <div class="form-group ">
+                            <input type="text" name="imgUrl"   value="{{spclz.imgUrl}}" class="form-control form-control-user"
+                                placeholder="Image Url">
+                        </div>
+
+                        <button class="btn btn-primary btn-user btn-block">
+                            Update
+                        </button>
+                    </form>
+                </div>
+                {% else %}
+                <div class="p-5">
+                    <div class="text-center">
+                        <h1 class="h4 text-gray-900 mb-4">Add Specialized </h1>
                     </div>
                     <form class="user" action="." method="post">
                         {% csrf_token %}
@@ -51,8 +77,10 @@
                         <button class="btn btn-primary btn-user btn-block">
                             Add
                         </button>
+                    </form>
                 </div>
-                </form>
+                {% endif %}
+                
                 <hr>
 
             </div>

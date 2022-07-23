@@ -11,7 +11,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Update About Content</title>
+    {% if singleWhyAesth %}
+
+    <title>Update WhyAestheticsk</title>
+    {% else %}
+    <title>Add WhyAestheticsk</title>
+    {% endif %}
 
     <!-- Custom fonts for this template-->
     <link href="/static/adminArea/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -33,11 +38,34 @@
                 <!-- Nested Row within Card Body -->
 
 
-
+                {% if singleWhyAesth %}
                 <div class="p-5">
                     <div class="text-center">
                         <h1 class="h4 text-gray-900 mb-4">Update WhyAestheticsk Content</h1>
                     </div>
+                    
+                    <form class="user" action="/aesthetic/updateWhyAestheticsk/{{singleWhyAesth.id}}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group ">
+                            <input type="text" name="name" value="{{singleWhyAesth.name}}"
+                                class="form-control form-control-user" placeholder="Name">
+                        </div>
+                        <div class="form-group ">
+                            <input type="text" name="iconUrl"  value="{{singleWhyAesth.iconUrl}}"
+                                class="form-control form-control-user" placeholder="Icon Url">
+                        </div>
+
+                        <button class="btn btn-primary btn-user btn-block">
+                            Update
+                        </button>
+                    </form>
+                </div>
+                {% else %}
+                <div class="p-5">
+                    <div class="text-center">
+                        <h1 class="h4 text-gray-900 mb-4">Add WhyAestheticsk Content</h1>
+                    </div>
+                    
                     <form class="user" action="." method="post">
                         {% csrf_token %}
                         <div class="form-group ">
@@ -52,8 +80,10 @@
                         <button class="btn btn-primary btn-user btn-block">
                             Add
                         </button>
+                    </form>
                 </div>
-                </form>
+                {% endif %}
+               
                 <hr>
 
             </div>

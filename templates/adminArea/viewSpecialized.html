@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin Dashboard | Booked Session List</title>
+    <title>Admin Dashboard | Specialized</title>
 
     <!-- Custom fonts for this template-->
     <link href="/static/adminArea/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -31,93 +31,92 @@
 
     <!-- Page Wrapper -->
     <div id="wrapper">
+ <!-- Sidebar -->
+ <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/aesthetic/adminArea">
+        <div class="sidebar-brand-icon ">
+            <img src="/static/images/logo.png" height="65" width="115" />
+        </div>
 
-        <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/aesthetic/adminArea">
-            <div class="sidebar-brand-icon ">
-                <img src="/static/images/logo.png" height="65" width="115" />
-            </div>
+    </a>
 
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" href="/aesthetic/adminArea">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
+
+    <!-- Divider -->
+    <!-- <hr class="sidebar-divider"> -->
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        View Contents
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+            aria-expanded="true" aria-controls="collapsePages">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Manage Data</span>
         </a>
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
 
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0">
-
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-            <a class="nav-link" href="/aesthetic/adminArea">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
-        </li>
-
-        <!-- Divider -->
-        <!-- <hr class="sidebar-divider"> -->
-
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            View Contents
-        </div>
-
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                aria-expanded="true" aria-controls="collapsePages">
-                <i class="fas fa-fw fa-folder"></i>
-                <span>Manage Data</span>
-            </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-
-                    <a class="collapse-item" href="/aesthetic/viewBookedSessions">View Booked Sessions</a>
-                    <a class="collapse-item" href="/aesthetic/viewBookedDesigns">View Booked Designs</a>
-                    <a class="collapse-item" href="/aesthetic/viewRooms">View Rooms</a>
-                    <a class="collapse-item" href="/aesthetic/viewWhyAestheticsk/">View WhyAestheticsk</a>
-                    <a class="collapse-item" href="/aesthetic/viewSpecialized/">View Specialized</a>
-                    <a class="collapse-item" href="/aesthetic/viewService/">View Services</a>
+                <a class="collapse-item" href="/aesthetic/viewBookedSessions">View Booked Sessions</a>
+                <a class="collapse-item" href="/aesthetic/viewBookedDesigns">View Booked Designs</a>
+                <a class="collapse-item" href="/aesthetic/viewRooms">View Rooms</a>
+                <a class="collapse-item" href="/aesthetic/viewWhyAestheticsk/">View WhyAestheticsk</a>
+                <a class="collapse-item" href="/aesthetic/viewSpecialized/">View Specialized</a>
+                <a class="collapse-item" href="/aesthetic/viewService/">View Services</a>
 
 
-                </div>
             </div>
-        </li>
-
-
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Update Hompage Contents
         </div>
-        <!-- Nav Item - Charts -->
-        <li class="nav-item">
-            <a class="nav-link" href="/aesthetic/updateAbout/">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Update About Section</span></a>
-        </li>
-      
-        <li class="nav-item">
-            <a class="nav-link" href="/aesthetic/updateContact/">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Update Contact</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/aesthetic/updateDesigner/">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Update Designer</span></a>
-        </li>
+    </li>
 
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
 
-    </ul>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Update Hompage Contents
+    </div>
+    <!-- Nav Item - Charts -->
+    <li class="nav-item">
+        <a class="nav-link" href="/aesthetic/updateAbout/">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Update About Section</span></a>
+    </li>
+  
+    <li class="nav-item">
+        <a class="nav-link" href="/aesthetic/updateContact/">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Update Contact</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/aesthetic/updateDesigner/">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Update Designer</span></a>
+    </li>
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+</ul>
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -146,7 +145,7 @@
                         </div>
                     </form>
 
-                <!-- Topbar Navbar -->
+               <!-- Topbar Navbar -->
  <ul class="navbar-nav ml-auto">
 
     <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -267,18 +266,27 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Total Booked Session List</h1>
-                    <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p> -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800"> Specialized List</h1>
+                        <!-- <button data-toggle="modal" data-target="#form"
+                            class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-plus fa-sm text-white-50"></i> Add More Designs</button> -->
+                                <a href="/aesthetic/addSpecialized"
+                                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                    class="fas fa-plus fa-sm text-white-50"></i> Add Specialized</a>
+                    </div>
+
+
+                    <div class="container-fluid">
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Booking Details</h6>
-                        </div>
+                        <!-- <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Rooms Details</h6>
+                        </div> -->
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -286,41 +294,43 @@
                                         <tr>
                                             <th>Id</th>
                                             <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Mobile</th>
-                                            <th>Address</th>
-                                            <th>Pin Code</th>
-                                            <th>Designer</th>
+                                            <th>Image Url</th>
+                                        
                                             <th>Action</th>
+
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>Id</th>
                                             <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Mobile</th>
-                                            <th>Address</th>
-                                            <th>Pin Code</th>
-                                            <th>Designer</th>
+                                            <th>Image Url</th>
+                                
                                             <th>Action</th>
+
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        {% for s in sessions %}
-                                        <tr>
-                                            <td>{{s.id}}</td>
-                                            <td>{{s.name}}</td>
-                                            <td>{{s.email}}</td>
-                                            <td>{{s.number}}</td>
-                                            <td>{{s.address}}</td>
-                                            <td>{{s.pincode}}</td>
-                                            <td>{{s.designer.name}}</td>
-                                            <td><a href="/aesthetic/delBookedSession/{{s.id}}"
-                                                    class="btn btn-danger">Delete</a></td>
-                                        </tr>
-                                        {% endfor %}
+                                       
+                                            {% for r in spclz %}
+                                            <tr>
+                                                <td>{{r.id}}</td>
+                                                <td>{{r.name}}</td>
+                                               
 
+                                                <td><img src="{{r.imgUrl}}" height="150" width="200" /></td>
+
+                                               
+                                               
+                                                <td><a href="/aesthetic/updateSpecialized/{{r.id}}"
+                                                        class="btn btn-primary"><i class="fa fa-edit"
+                                                            aria-hidden="true"></i></a> <a
+                                                        href="/aesthetic/delSpecialized/{{r.id}}" class="btn btn-danger"><i
+                                                            class="fa fa-trash" aria-hidden="true"></i></a>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                            
                                     </tbody>
                                 </table>
                             </div>
@@ -377,6 +387,7 @@
     <script>
         {% for msg in messages %}
         alertify.set('notifier', 'position', 'top-right');
+
         alertify.{{ msg.tags }} ('{{msg}}');
         {% endfor %}
     </script>
@@ -390,13 +401,7 @@
     <!-- Custom scripts for all pages-->
     <script src="/static/adminArea/js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="/static/adminArea/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="/static/adminArea/js/demo/chart-area-demo.js"></script>
-    <script src="/static/adminArea/js/demo/chart-pie-demo.js"></script>
-
+   
 </body>
 
 </html>

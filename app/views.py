@@ -13,6 +13,14 @@ from django.http import JsonResponse
 # Create your views here.
 
 
+
+
+from django.template import RequestContext
+
+
+def custom_page_not_found_view(request, exception):
+    return render(request, "pageNotFound.html", {})
+
 def home(request):
     if 'term' in request.GET:
         qs=Room.objects.filter(name__icontains=request.GET.get('term'))
@@ -139,20 +147,61 @@ def updateAbout(request):
         return redirect('error')
 
 @login_required(login_url='/aesthetic/login')
-def updateWhyAestheticsk(request):
+def viewWhyAestheticsk(request):
+    if request.user.is_staff :
+        whyAesth=WhyAesthetics.objects.all()
+        # if(request.method == "POST"):
+        #     name=request.POST['name']
+        #     iconUrl=request.POST['iconUrl']
+        #     WhyAesthetics(name=name,iconUrl=iconUrl).save()
+        #     messages.success(request, 'Saved')
+        #     return redirect("adminArea")
+        return render(request,"adminArea/whyaestheticsk.html",{"whyAesth":whyAesth})
+    else:
+        return redirect('error')
+
+@login_required(login_url='/aesthetic/login')
+def updateWhyAestheticsk(request,pk):
+    if request.user.is_staff :
+        singleWhyAesth=WhyAesthetics.objects.filter(id=pk)[0]
+        if(request.method == "POST"):
+            name=request.POST['name']
+            iconUrl=request.POST['iconUrl']
+            singleWhyAesth.name=name
+            singleWhyAesth.iconUrl=iconUrl
+            singleWhyAesth.save()
+            messages.success(request, 'Updated')
+            return redirect('viewWhyAestheticsk')
+        return render(request,"adminArea/updateWhyAesth.html",{"singleWhyAesth":singleWhyAesth})
+    else:
+        return redirect('error')
+
+@login_required(login_url='/aesthetic/login')
+def addWhyAestheticsk(request):
     if request.user.is_staff :
         if(request.method == "POST"):
             name=request.POST['name']
             iconUrl=request.POST['iconUrl']
             WhyAesthetics(name=name,iconUrl=iconUrl).save()
-            messages.success(request, 'Saved')
-            return redirect("adminArea")
+            messages.success(request, 'Added!!')
+            return redirect('viewWhyAestheticsk')
         return render(request,"adminArea/updateWhyAesth.html")
     else:
         return redirect('error')
 
 @login_required(login_url='/aesthetic/login')
-def updateSpecialized(request):
+def delWhyAestheticsk(request,pk):
+    if request.user.is_staff :
+            singleWhyAesth=WhyAesthetics.objects.filter(id=pk)[0]
+            singleWhyAesth.delete()
+            messages.success(request,"Deleted!!")
+            return redirect('viewWhyAestheticsk')
+            
+    else:
+        return redirect('error')
+
+@login_required(login_url='/aesthetic/login')
+def addSpecialized(request):
     if request.user.is_staff :
         if(request.method == "POST"):
             name=request.POST['name']
@@ -160,22 +209,95 @@ def updateSpecialized(request):
             Specialized(name=name,imgUrl=imgUrl).save()
             print("saved")
             messages.success(request, 'Saved')
-            return redirect("adminArea")
+            return redirect("viewSpecialized")
         return render(request,"adminArea/updateSpecialized.html")
     else:
         return redirect('error')
+
 @login_required(login_url='/aesthetic/login')
-def updateService(request):
+def viewSpecialized(request):
+    if request.user.is_staff :
+        spclz=Specialized.objects.all()
+        return render(request,"adminArea/viewSpecialized.html",{"spclz":spclz})
+    else:
+        return redirect('error')
+
+@login_required(login_url='/aesthetic/login')
+def updateSpecialized(request,pk):
+    if request.user.is_staff :
+        spclz=Specialized.objects.filter(id=pk)[0]
+        if(request.method == "POST"):
+            name=request.POST['name']
+            imgUrl=request.POST['imgUrl']
+            spclz.name=name
+            spclz.imgUrl=imgUrl
+            spclz.save()
+            messages.success(request, 'Update!!')
+            return redirect("viewSpecialized")
+        return render(request,"adminArea/updateSpecialized.html",{"spclz":spclz})
+    else:
+        return redirect('error')
+
+@login_required(login_url='/aesthetic/login')
+def delSpecialized(request,pk):
+    if request.user.is_staff :
+        spclz=Specialized.objects.filter(id=pk)[0]
+        spclz.delete()
+        messages.success(request, 'Deleted!!')
+        return redirect("viewSpecialized")
+    else:
+        return redirect('error')
+
+
+@login_required(login_url='/aesthetic/login')
+def viewService(request):
+    if request.user.is_staff :
+        svc=Service.objects.all()
+        return render(request,"adminArea/viewServices.html",{"svc":svc})
+    else:
+        return redirect('error')
+
+@login_required(login_url='/aesthetic/login')
+def addService(request):
     if request.user.is_staff :
         if(request.method == "POST"):
             name=request.POST['name']
             iconUrl=request.POST['iconUrl']
             Service(name=name,iconUrl=iconUrl).save()
-            messages.success(request, 'Saved')
-            return redirect("adminArea")
+            messages.success(request, 'Added!!')
+            return redirect("viewService")
         return render(request,"adminArea/updateService.html")
     else:
         return redirect('error')
+
+
+@login_required(login_url='/aesthetic/login')
+def updateService(request,pk):
+    if request.user.is_staff :
+        svc=Service.objects.filter(id=pk)[0]
+        if(request.method == "POST"):
+            name=request.POST['name']
+            iconUrl=request.POST['iconUrl']
+            svc.name=name
+            svc.iconUrl=iconUrl
+            svc.save()
+            messages.success(request, 'Updated!!')
+            return redirect("viewService")
+        return render(request,"adminArea/updateService.html",{"svc":svc})
+    else:
+        return redirect('error')
+
+@login_required(login_url='/aesthetic/login')
+def delService(request,pk):
+    if request.user.is_staff :
+        svc=Service.objects.filter(id=pk)[0]
+        svc.delete()
+        messages.success(request, 'Deleted!!')
+        return redirect("viewService")
+    else:
+        return redirect('error')
+
+
 
 @login_required(login_url='/aesthetic/login')
 def updateContact(request):
@@ -510,7 +632,7 @@ def Logout(request):
 
 
 def errorPage(request):
-    return render(request,"adminArea/Error.html")
+    return render(request,"pageNotFound.html")
 
 def searchPage(request):
     # query = request.GET.get('q', '')
@@ -521,3 +643,10 @@ def searchPage(request):
     #     results = []
     
     return render(request,"adminArea/searchResults.html")
+
+def commingSoonPage(request):
+    return render(request,"commingSoon.html",{"contact":Contact.objects.first()})
+
+
+
+

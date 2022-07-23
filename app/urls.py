@@ -12,9 +12,18 @@ urlpatterns = [
     path('aesthetic/logout/',Logout,name='logout'),
     path('aesthetic/adminArea/',adminPage,name="adminArea"),
     path('aesthetic/updateAbout/',updateAbout),
-    path('aesthetic/updateWhyAestheticsk/',updateWhyAestheticsk),
-    path('aesthetic/updateSpecialized/',updateSpecialized),
-    path('aesthetic/updateService/',updateService),
+    path('aesthetic/viewWhyAestheticsk/',viewWhyAestheticsk,name="viewWhyAestheticsk"),
+    path('aesthetic/addWhyAestheticsk/',addWhyAestheticsk),
+    path('aesthetic/updateWhyAestheticsk/<int:pk>',updateWhyAestheticsk),
+    path('aesthetic/delWhyAestheticsk/<int:pk>',delWhyAestheticsk),
+    path('aesthetic/viewSpecialized/',viewSpecialized,name="viewSpecialized"),
+    path('aesthetic/addSpecialized/',addSpecialized),
+    path('aesthetic/updateSpecialized/<int:pk>',updateSpecialized),
+    path('aesthetic/delSpecialized/<int:pk>',delSpecialized),
+    path('aesthetic/viewService/',viewService,name="viewService"),
+    path('aesthetic/updateService/<int:pk>',updateService),
+    path('aesthetic/addService/',addService),
+    path('aesthetic/delService/<int:pk>',delService),
     path('aesthetic/updateContact/',updateContact),
     path('aesthetic/updateDesigner/',updateDesigner),
     # path('aesthetic/addDesigner/',addDesigner),
@@ -31,7 +40,9 @@ urlpatterns = [
     path('aesthetic/delBookedDesign/<int:pk>',delBookedDesign),
     path('aesthetic/delBookedSession/<int:pk>',delBookedSession),
     path('aesthetic/error',errorPage,name="error"),
-    path('aesthetic/search',searchPage,name="searchResults"),
+    path('search',searchPage,name="searchResults"),
+    path('commingsoon/',commingSoonPage,name="commingsoon"),
+
     
 
 

@@ -316,8 +316,9 @@
   }
 
   .categoricalImages {
-    display: grid;
+    display: flex;
     grid-template-columns: auto auto;
+    flex-direction: column;
   }
 
   .toggle-box-content {

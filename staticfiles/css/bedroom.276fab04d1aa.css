@@ -58,7 +58,6 @@
 .main-image .show-image img {
   width: 100%;
   height: auto;
-  padding: 5px;
 }
 .main-image .show-image img:hover {
   opacity: 0.2;
