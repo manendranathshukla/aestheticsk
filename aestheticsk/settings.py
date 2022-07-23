@@ -26,7 +26,7 @@ SECRET_KEY = 'ai0mylz%^j7q7971@7thsjufp@)oz8-$shcv+#&ab1#f8_gc*k'
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
-
+CSRF_TRUSTED_ORIGINS = ['https://aestheticsk.com']
 
 # Application definition
 
