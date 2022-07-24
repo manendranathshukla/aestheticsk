@@ -79,11 +79,11 @@ def bookSession(request):
     text_content = "..."                      
     msg = EmailMultiAlternatives("Your Session Booked With Us", text_content, settings.EMAIL_HOST_USER, [email])                                      
     msg.attach_alternative(html_content, "text/html")   
-    issessemailSentUser=msg.send()
+    issessemailSentUser=msg.send(fail_silently=False)
     html_contentadmin = render_to_string('emailTemplates/sessionBookedEmailAdmin.html', {'designer':Designer.objects.first(),'name': name,'email':email,'contact':number,'address':address,'pincode':pincode,  'sessionId':sess.id,'bookeddate':sess.created_at})                      
     msgAdmin = EmailMultiAlternatives("Alert : User Booked a Session", text_content, settings.EMAIL_HOST_USER, [Contact.objects.first().office_email])                                      
     msgAdmin.attach_alternative(html_contentadmin, "text/html")                                                                                                                                                                            
-    issessemailSentAdmin=msgAdmin.send()
+    issessemailSentAdmin=msgAdmin.send(fail_silently=False)
     if(issessemailSentUser != 1 and issessemailSentAdmin !=1):
         messages.error(request, 'Email Not Sent!')
     print("Booking details email successfully!")
@@ -117,11 +117,11 @@ def bookDesign(request,pk):
     text_content = "..."                      
     msg = EmailMultiAlternatives("Your Interested Design Booked With Us", text_content, settings.EMAIL_HOST_USER, [email])                                      
     msg.attach_alternative(html_content, "text/html")   
-    isdesignemailSentUser=msg.send()
+    isdesignemailSentUser=msg.send(fail_silently=False)
     html_contentadmin = render_to_string('emailTemplates/designBookedEmailAdmin.html', {'bookedDesign':design})                      
     msgAdmin = EmailMultiAlternatives("Alert : User Booked Interested Design", text_content, settings.EMAIL_HOST_USER, [Contact.objects.first().office_email])                                      
     msgAdmin.attach_alternative(html_contentadmin, "text/html")                                                                                                                                                                            
-    isdesignemailSentAdmin=msgAdmin.send()
+    isdesignemailSentAdmin=msgAdmin.send(fail_silently=False)
     if(isdesignemailSentUser != 1 and isdesignemailSentAdmin !=1):
         messages.error(request, 'Email Not Sent!')
 
