@@ -58,7 +58,8 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="form-inline my-2 my-lg-0">
+            <form class="form-inline my-2 my-lg-0" method="post" action="search/">
+                {% csrf_token %}
                 <input class="form-control mr-sm-2" type="search" name="search" id="search" placeholder="Search"
                     aria-label="Search">
                 <button class="btn btn-outline-success form-button my-2 my-sm-0" type="submit"><i
@@ -398,7 +399,7 @@
         </div>
     </div>
     <div class="stamp">
-        <span>Website designed & developed by Rishu Raj & Manendra </span>
+        <span>Website designed & developed by <a href="https://www.linkedin.com/in/rishu-raj-294385176" style="color: green;">Rishu Raj</a> & <a href="https://www.linkedin.com/in/manendra-nath-s-5b5663170" style="color: green;">Manendra</a> Team</span>
     </div>
 
 

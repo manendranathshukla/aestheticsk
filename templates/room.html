@@ -131,8 +131,10 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="form-inline my-2 my-lg-0" method="post" action="search/">
+                {% csrf_token %}
+                <input class="form-control mr-sm-2" type="search" name="search" id="search" placeholder="Search"
+                    aria-label="Search">
                 <button class="btn btn-outline-success form-button my-2 my-sm-0" type="submit"><i
                         class="fa fa-search"></i></button>
             </form>
@@ -191,8 +193,8 @@
         <div class="show-image">
             <img src="{{img.image}}" />
             <div class="wrapper-for-hovered-div">
-                <a id="form-trigger" class="send-button" href="#contact-form">
-                    <input hidden type="text" name="imgID" id="imgID" value="{{img.id}}">
+                <a id="form-trigger" data-value="{{img.id}}" class="send-button" href="#contact-form">
+                   
                     <img src="https://cdn-icons-png.flaticon.com/512/1246/1246105.png?w=740" /></a>
                 <p>Contact us </p>
                 <p> Get this design at your home</p>
@@ -262,7 +264,7 @@
         </div>
     </div>
     <div class="stamp">
-        <span>Website designed & developed by Rishu Raj & Manendra</span>
+        <span>Website designed & developed by <a href="https://www.linkedin.com/in/rishu-raj-294385176" style="color: green;">Rishu Raj</a> & <a href="https://www.linkedin.com/in/manendra-nath-s-5b5663170" style="color: green;">Manendra</a> Team</span>
     </div>
 </body>
 
@@ -278,7 +280,7 @@
 <script>
     $(document).ready(function () {
         $(".main-image .show-image #form-trigger").click(function () {
-            $form_action = "/bookDesign/" + document.getElementById("imgID").value;
+            $form_action = "/bookDesign/" + $(this).data("value");;
             console.log($form_action);
             document.getElementById("bookdesignform").action = $form_action;
             $("#contact-form").toggle();
