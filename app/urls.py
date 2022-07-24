@@ -40,7 +40,7 @@ urlpatterns = [
     path('aesthetic/delBookedDesign/<int:pk>',delBookedDesign),
     path('aesthetic/delBookedSession/<int:pk>',delBookedSession),
     path('aesthetic/error',errorPage,name="error"),
-    path('search',searchPage,name="searchResults"),
+    path('search/',searchPage,name="searchResults"),
     path('commingsoon/',commingSoonPage,name="commingsoon"),
 
     

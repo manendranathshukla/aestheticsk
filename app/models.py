@@ -90,6 +90,7 @@ class BookSession(Model):
     pincode=models.IntegerField(max_length=6)
     address=models.TextField(null=True, blank=True)
     designer=models.ForeignKey(Designer,on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return str(self.name)+str(self.number) + " -> " + str(self.designer.name) 
 
@@ -104,6 +105,7 @@ class BookDesign(Model):
     message=models.TextField(null=True, blank=True)
     interestedDesign=models.ForeignKey(Images,on_delete=models.CASCADE)
     designer=models.ForeignKey(Designer,on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return str(self.name)+"  ->  "+str(self.interestedDesign.custom_id) + "  ->  " + str(self.designer.name) 

@@ -1,7 +1,8 @@
 
+from unittest import result
 from django.shortcuts import render, get_object_or_404,redirect,reverse
 from django.db.models import Count,Q
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage,EmailMultiAlternatives
 from django.conf import settings
 from django.contrib import messages
 from .forms import *
@@ -11,7 +12,7 @@ from app.models import *
 
 from django.http import JsonResponse
 # Create your views here.
-
+from django.template.loader import render_to_string
 
 
 
@@ -73,15 +74,17 @@ def bookSession(request):
 
     BookSession(name=name,email=email,number=number,pincode=pincode,address=address,designer=Designer.objects.first()).save()
     messages.success(request, 'Session Booked Successfully!')
-    email = EmailMessage(
-    subject='Your Session Booked With Us!!!',
-    body='Hi '+name+'\nThank you for booking session with us. \n Here is your booked session ID:'+str(BookSession.objects.latest('id').id),
-    from_email=settings.EMAIL_HOST_USER,
-    to=[email],
-    headers={'Content-Type': 'text/plain'},
-    )
-    isSent=email.send()
-    if(isSent != 1):
+    sess=BookSession.objects.latest('id')
+    html_content = render_to_string('emailTemplates/sessionBookedEmail.html', {'name': name,'sessionId':sess.id,'bookeddate':sess.created_at})
+    text_content = "..."                      
+    msg = EmailMultiAlternatives("Your Session Booked With Us", text_content, settings.EMAIL_HOST_USER, [email])                                      
+    msg.attach_alternative(html_content, "text/html")   
+    issessemailSentUser=msg.send()
+    html_contentadmin = render_to_string('emailTemplates/sessionBookedEmailAdmin.html', {'designer':Designer.objects.first(),'name': name,'email':email,'contact':number,'address':address,'pincode':pincode,  'sessionId':sess.id,'bookeddate':sess.created_at})                      
+    msgAdmin = EmailMultiAlternatives("Alert : User Booked a Session", text_content, settings.EMAIL_HOST_USER, [Contact.objects.first().office_email])                                      
+    msgAdmin.attach_alternative(html_contentadmin, "text/html")                                                                                                                                                                            
+    issessemailSentAdmin=msgAdmin.send()
+    if(issessemailSentUser != 1 and issessemailSentAdmin !=1):
         messages.error(request, 'Email Not Sent!')
     print("Booking details email successfully!")
 
@@ -100,15 +103,27 @@ def bookDesign(request,pk):
     BookDesign(name=name,email=email,number=number,pincode=pincode,address=address,message=message,interestedDesign=Images.objects.filter(id=pk)[0],designer=Designer.objects.first()).save()
     messages.success(request, 'Selected Design Booked Successfully!')
    
-    email = EmailMessage(
-    subject='Your Design Booked With Us!!!',
-    body='Hi '+name+' thank you for showing interest in our designs. \n Here is your booked design ID:'+str(BookDesign.objects.latest('id').id),
-    from_email=settings.EMAIL_HOST_USER,
-    to=[email],
-    headers={'Content-Type': 'text/plain'},
-    )
-    email.send()
-    print("Booking details email successfully!")
+    # email = EmailMessage(
+    # subject='Your Design Booked With Us!!!',
+    # body='Hi '+name+' thank you for showing interest in our designs. \n Here is your booked design ID:'+str(BookDesign.objects.latest('id').id),
+    # from_email=settings.EMAIL_HOST_USER,
+    # to=[email],
+    # headers={'Content-Type': 'text/plain'},
+    # )
+    # email.send()
+    # print("Booking details email successfully!")
+    design=BookDesign.objects.latest('id')
+    html_content = render_to_string('emailTemplates/designBookedEmail.html', {'name': name,'design':design})
+    text_content = "..."                      
+    msg = EmailMultiAlternatives("Your Interested Design Booked With Us", text_content, settings.EMAIL_HOST_USER, [email])                                      
+    msg.attach_alternative(html_content, "text/html")   
+    isdesignemailSentUser=msg.send()
+    html_contentadmin = render_to_string('emailTemplates/designBookedEmailAdmin.html', {'bookedDesign':design})                      
+    msgAdmin = EmailMultiAlternatives("Alert : User Booked Interested Design", text_content, settings.EMAIL_HOST_USER, [Contact.objects.first().office_email])                                      
+    msgAdmin.attach_alternative(html_contentadmin, "text/html")                                                                                                                                                                            
+    isdesignemailSentAdmin=msgAdmin.send()
+    if(isdesignemailSentUser != 1 and isdesignemailSentAdmin !=1):
+        messages.error(request, 'Email Not Sent!')
 
     return redirect(request.META.get('HTTP_REFERER'))
     
@@ -635,14 +650,12 @@ def errorPage(request):
     return render(request,"pageNotFound.html")
 
 def searchPage(request):
-    # query = request.GET.get('q', '')
-    # if query:
-    #     # query example
-    #     results = MyEntity.objects.filter(name__icontains=query).distinct()
-    # else:
-    #     results = []
-    
-    return render(request,"adminArea/searchResults.html")
+    if request.method == 'POST':
+        q=request.POST['search']
+        results=Room.objects.filter(name__icontains=q)
+        # results=Room.objects.filter(name=q)
+        # print(results,result)
+        return render(request,"searchResults.html",{"searchResults":results,'q':q})
 
 def commingSoonPage(request):
     return render(request,"commingSoon.html",{"contact":Contact.objects.first()})
