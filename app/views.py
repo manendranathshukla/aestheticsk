@@ -61,6 +61,14 @@ def room(request,pk):
     rooms=Room.objects.all()
     return render(request, "room.html",context={"myroom":myroom,"images":images,'designer':designer,'contact':contact,'about':aboutContent,"rooms":rooms})
 
+def service(request,pk):
+    mysvc=Service.objects.get(pk=pk)
+    svcimages=ServiceImage.objects.filter(service=mysvc)
+    designer=Designer.objects.first()
+    contact=Contact.objects.first()
+    aboutContent=About.objects.first()
+    rooms=Room.objects.all()
+    return render(request, "service.html",context={"mysvc":mysvc,"images":svcimages,'designer':designer,'contact':contact,'about':aboutContent,"rooms":rooms})
 
 
 
@@ -99,19 +107,12 @@ def bookDesign(request,pk):
     pincode=request.POST['pincode']
     address=request.POST['address']
     message=request.POST['message']
-
-    BookDesign(name=name,email=email,number=number,pincode=pincode,address=address,message=message,interestedDesign=Images.objects.filter(id=pk)[0],designer=Designer.objects.first()).save()
+    prevUrl=request.META.get('HTTP_REFERER')
+    if('services' in prevUrl):
+        BookDesign(name=name,email=email,number=number,pincode=pincode,address=address,message=message,interestedServiceDesign=ServiceImage.objects.filter(id=pk)[0],designer=Designer.objects.first()).save()
+    if('rooms' in prevUrl):
+        BookDesign(name=name,email=email,number=number,pincode=pincode,address=address,message=message,interestedDesign=Images.objects.filter(id=pk)[0],designer=Designer.objects.first()).save()
     messages.success(request, 'Selected Design Booked Successfully!')
-   
-    # email = EmailMessage(
-    # subject='Your Design Booked With Us!!!',
-    # body='Hi '+name+' thank you for showing interest in our designs. \n Here is your booked design ID:'+str(BookDesign.objects.latest('id').id),
-    # from_email=settings.EMAIL_HOST_USER,
-    # to=[email],
-    # headers={'Content-Type': 'text/plain'},
-    # )
-    # email.send()
-    # print("Booking details email successfully!")
     design=BookDesign.objects.latest('id')
     html_content = render_to_string('emailTemplates/designBookedEmail.html', {'name': name,'design':design})
     text_content = "..."                      
@@ -278,7 +279,9 @@ def addService(request):
         if(request.method == "POST"):
             name=request.POST['name']
             iconUrl=request.POST['iconUrl']
-            Service(name=name,iconUrl=iconUrl).save()
+            mainDivBackImageUrl=request.POST['mainDivBackImageUrl']
+            
+            Service(name=name,iconUrl=iconUrl,mainDivBackImageUrl=mainDivBackImageUrl).save()
             messages.success(request, 'Added!!')
             return redirect("viewService")
         return render(request,"adminArea/updateService.html")
@@ -293,8 +296,10 @@ def updateService(request,pk):
         if(request.method == "POST"):
             name=request.POST['name']
             iconUrl=request.POST['iconUrl']
+            mainDivBackImageUrl=request.POST['mainDivBackImageUrl']
             svc.name=name
             svc.iconUrl=iconUrl
+            svc.mainDivBackImageUrl=mainDivBackImageUrl
             svc.save()
             messages.success(request, 'Updated!!')
             return redirect("viewService")
@@ -541,6 +546,18 @@ def viewRoomImage(request,pk):
 
 
 @login_required(login_url='/aesthetic/login')
+def viewServiceImage(request,pk):
+    if request.user.is_staff :
+        service=Service.objects.filter(id=pk)[0]
+        images=ServiceImage.objects.filter(service=service)
+        context={"service":service,"images":images}
+        return render(request,"adminArea/serviceImage.html",context)
+    else:
+        return redirect('error')
+
+
+
+@login_required(login_url='/aesthetic/login')
 def addRoomImage(request):
     if request.user.is_staff :
         rooms=Room.objects.all()
@@ -567,6 +584,24 @@ def addRoomImage(request):
         return render(request,"adminArea/addRoomImage.html",context=context)
     else:
         return redirect('error')
+
+@login_required(login_url='/aesthetic/login')
+def addServiceImage(request):
+    if request.user.is_staff :
+        rooms=Room.objects.all()
+        svc=Service.objects.all()
+        context={"rooms":rooms,"svc":svc}
+        if(request.method == "POST"):
+            imgurl=request.POST['designUrl']
+            service=request.POST['svc']
+            serviceObj=Service.objects.filter(id=int(service))[0]
+            ServiceImage(service=serviceObj,imgUrl=imgurl).save()
+            messages.success(request, 'Image Added Successfully!')
+            return redirect('viewServiceImage',pk=serviceObj.id)
+        return render(request,"adminArea/addRoomImage.html",context=context)
+    else:
+        return redirect('error')
+
 
 
 
@@ -609,7 +644,14 @@ def delRoomImage(request,pk):
         return redirect(request.META.get('HTTP_REFERER'))
     else:
         return redirect('error')
-
+@login_required(login_url='/aesthetic/login')
+def delServiceImage(request,pk):
+    if request.user.is_staff :
+        ServiceImage.objects.filter(id=pk).delete()
+        messages.success(request,"Image deleted !!")
+        return redirect(request.META.get('HTTP_REFERER'))
+    else:
+        return redirect('error')
 def loginPage(request):
     if request.method == 'POST':
         username=request.POST['username']

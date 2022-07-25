@@ -295,6 +295,7 @@
                                             <th>Id</th>
                                             <th>Name</th>
                                             <th>Icon Url</th>
+                                            <th>Background Image</th>
                                             <th>Action</th>
 
                                         </tr>
@@ -304,6 +305,7 @@
                                             <th>Id</th>
                                             <th>Name</th>
                                             <th>Icon Url</th>
+                                            <th>Background Image</th>
                                             <th>Action</th>
 
                                         </tr>
@@ -317,10 +319,15 @@
                                                
 
                                                 <td><img src="{{r.iconUrl}}" height="70" width="90" /></td>
+                                                <td><img src="{{r.mainDivBackImageUrl}}" height="70" width="90" /></td>
 
                                                
                                                
-                                                <td><a href="/aesthetic/updateService/{{r.id}}"
+                                                <td>
+                                                    <a href="/aesthetic/viewServiceImages/{{r.id}}"
+                                                        class="btn btn-primary"><i class="fa fa-eye"
+                                                            aria-hidden="true"></i></a>
+                                                    <a href="/aesthetic/updateService/{{r.id}}"
                                                         class="btn btn-primary"><i class="fa fa-edit"
                                                             aria-hidden="true"></i></a> <a
                                                         href="/aesthetic/delService/{{r.id}}" class="btn btn-danger"><i
