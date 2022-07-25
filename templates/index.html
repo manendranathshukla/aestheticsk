@@ -342,10 +342,10 @@
             {% for svc in services %}
             <div class="box">
                 <div class="top">
-                    <img src="{{svc.iconUrl}}" />
+                    <a href="services/{{svc.id}}"><img src="{{svc.iconUrl}}" /></a>
                 </div>
                 <div class="middle">
-                    <label>{{svc.name}}</label>
+                    <a href="services/{{svc.id}}" style="color:black;"> <label>{{svc.name}}</label></a>
                 </div>
                 <div class="bottom">
 

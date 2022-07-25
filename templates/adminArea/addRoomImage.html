@@ -10,8 +10,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    {% if "viewServiceImages" in request.META.HTTP_REFERER %}
+    <title>Add Service Image</title>
+    {% else %}
     <title>Add Room Image</title>
+    {% endif %}
+
 
     <!-- Custom fonts for this template-->
     <link href="/static/adminArea/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -32,8 +36,41 @@
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
 
+                
+                
+                {% if "viewServiceImages" in request.META.HTTP_REFERER %}
+
+                <div class="p-5">
+                    <div class="text-center">
+                        <h1 class="h4 text-gray-900 mb-4">Add New Service Designs</h1>
+                    </div>
+                    <form class="newroom" action="." method="post">
+                        {% csrf_token %}
+                        <div class="form-group ">
+                            <label for="name"> Design  Url</label>
+                            <input type="text" id="designUrl" name="designUrl" class="form-control form-control-user"
+                                placeholder="Enter design url...">
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="rooms"> Service</label>
+                            <select id="rooms" name="svc" class="form-select"
+                                aria-label="Default select example">
+                                {% for d in svc %}
+                                <option value="{{d.id}}">{{d.name}}</option>
+                                {% endfor %}
+
+                            </select>
+                        </div>
+                        
 
 
+                        <button class="btn btn-primary btn-user btn-block">
+                            Add 
+                        </button>
+                    </form>
+                </div>
+              {% else %}
                 <div class="p-5">
                     <div class="text-center">
                         <h1 class="h4 text-gray-900 mb-4">Add New Room Designs</h1>
@@ -72,8 +109,9 @@
                         <button class="btn btn-primary btn-user btn-block">
                             Add 
                         </button>
+                    </form>
                 </div>
-                </form>
+               {% endif %}
                 <hr>
 
             </div>

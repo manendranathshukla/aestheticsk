@@ -21,9 +21,15 @@ class Specialized(Model):
 class Service(Model):
     name=models.CharField(max_length=50)
     iconUrl=models.URLField(max_length=200)
+    mainDivBackImageUrl=models.URLField(max_length=200,blank=True,null=True)
 
     def __str__(self):
         return self.name
+
+class ServiceImage(Model):
+    service=models.ForeignKey(Service,on_delete=models.CASCADE)
+    imgUrl=models.URLField(max_length=200)
+    
 
 class Contact(Model):
     office_address=models.TextField()
@@ -103,9 +109,10 @@ class BookDesign(Model):
     pincode=models.IntegerField(max_length=6)
     address=models.TextField(null=True, blank=True)
     message=models.TextField(null=True, blank=True)
-    interestedDesign=models.ForeignKey(Images,on_delete=models.CASCADE)
+    interestedDesign=models.ForeignKey(Images,on_delete=models.CASCADE,null=True)
+    interestedServiceDesign=models.ForeignKey(ServiceImage,on_delete=models.CASCADE,null=True)
     designer=models.ForeignKey(Designer,on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.name)+"  ->  "+str(self.interestedDesign.custom_id) + "  ->  " + str(self.designer.name) 
+        return str(self.id)
