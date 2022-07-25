@@ -289,9 +289,13 @@
                                 <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">You will receive a call shortly with our designer.</span></p>
                                 <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">DESIGN BOOKED ID : {{design.id}}</span></p>
                                 <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">DESIGN BOOKED ON : {{design.created_at}}</span></p>
+                                {% if design.interestedDesign %}
                                 <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">INTERESTED DESIGN ID : {{design.interestedDesign.id}}</span></p>
                                 <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">INTERESTED DESIGN : <img src="{{design.interestedDesign.image}}" height="70px" width="100px" /></span></p>
-
+                                {% elif design.interestedServiceDesign %}
+                                <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">INTERESTED DESIGN ID : {{design.interestedServiceDesign.id}}</span></p>
+                                <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">INTERESTED DESIGN : <img src="{{design.interestedServiceDesign.imgUrl}}" height="70px" width="100px" /></span></p>
+                                {% endif %}
 
                               </div>
 

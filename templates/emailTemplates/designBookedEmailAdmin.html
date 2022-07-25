@@ -295,9 +295,14 @@
                                 <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">MESSAGE : {{bookedDesign.message}}</span></p>
                                 <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">DESIGN BOOKED ID : {{bookedDesign.id}}</span></p>
                                 <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">DESIGN BOOKED ON : {{bookedDesign.created_at}}</span></p>
+                                {% if bookedDesign.interestedDesign %}
                                 <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">INTERESTED DESIGN ID : {{bookedDesign.interestedDesign.id}}</span></p>
                                 <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">INTERESTED DESIGN : <img src="{{bookedDesign.interestedDesign.image}}" height="70px" width="100px" /></span></p>
-                              </div>
+                                {% elif bookedDesign.interestedServiceDesign %}
+                                <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">INTERESTED DESIGN ID : {{bookedDesign.interestedServiceDesign.id}}</span></p>
+                                <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">INTERESTED DESIGN : <img src="{{bookedDesign.interestedServiceDesign.imgUrl}}" height="70px" width="100px" /></span></p>
+                                {% endif %}
+                                </div>
 
                             </td>
                           </tr>
