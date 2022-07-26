@@ -29,3 +29,4 @@ urlpatterns = [
     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 handler404 = 'app.views.custom_page_not_found_view'
+handler500 = 'app.views.custom_internal_server_error_view'
