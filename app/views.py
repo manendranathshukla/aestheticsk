@@ -25,9 +25,13 @@ def custom_page_not_found_view(request, exception):
 def home(request):
     if 'term' in request.GET:
         qs=Room.objects.filter(name__icontains=request.GET.get('term'))
+        svc=Service.objects.filter(name__icontains=request.GET.get('term'))
         names=[]
         for n in qs:
             names.append(n.name)
+        if(len(svc)>0):
+            for n in svc:
+                names.append(n.name)
         return  JsonResponse(names,safe=False)
     whyAsth=WhyAesthetics.objects.all()
     aboutContent=About.objects.first()
@@ -53,6 +57,16 @@ def home(request):
 
 
 def room(request,pk):
+    if 'term' in request.GET:
+        qs=Room.objects.filter(name__icontains=request.GET.get('term'))
+        svc=Service.objects.filter(name__icontains=request.GET.get('term'))
+        names=[]
+        for n in qs:
+            names.append(n.name)
+        if(len(svc)>0):
+            for n in svc:
+                names.append(n.name)
+        return  JsonResponse(names,safe=False)
     myroom=Room.objects.get(pk=pk)
     images=Images.objects.filter(room=myroom)
     designer=Designer.objects.first()
@@ -62,6 +76,16 @@ def room(request,pk):
     return render(request, "room.html",context={"myroom":myroom,"images":images,'designer':designer,'contact':contact,'about':aboutContent,"rooms":rooms})
 
 def service(request,pk):
+    if 'term' in request.GET:
+        qs=Room.objects.filter(name__icontains=request.GET.get('term'))
+        svc=Service.objects.filter(name__icontains=request.GET.get('term'))
+        names=[]
+        for n in qs:
+            names.append(n.name)
+        if(len(svc)>0):
+            for n in svc:
+                names.append(n.name)
+        return  JsonResponse(names,safe=False)
     mysvc=Service.objects.get(pk=pk)
     svcimages=ServiceImage.objects.filter(service=mysvc)
     designer=Designer.objects.first()
@@ -694,9 +718,10 @@ def errorPage(request):
 def searchPage(request):
     if request.method == 'POST':
         q=request.POST['search']
-        results=Room.objects.filter(name__icontains=q)
-        # results=Room.objects.filter(name=q)
-        # print(results,result)
+        if(len(Room.objects.filter(name__icontains=q))>0):
+            results=Room.objects.filter(name__icontains=q)
+        else:
+            results=Service.objects.filter(name__icontains=q)
         return render(request,"searchResults.html",{"searchResults":results,'q':q})
 
 def commingSoonPage(request):

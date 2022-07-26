@@ -9,6 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aesthetics | Interior Designers</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css'>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -131,7 +133,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="form-inline my-2 my-lg-0" method="post" action="search/">
+            <form class="form-inline my-2 my-lg-0" method="post" action="/search/">
                 {% csrf_token %}
                 <input class="form-control mr-sm-2" type="search" name="search" id="search" placeholder="Search"
                     aria-label="Search">
@@ -266,7 +268,7 @@
     <div class="stamp">
         <span>Website designed & developed by <a href="https://www.linkedin.com/in/rishu-raj-294385176" style="color: green;">Rishu Raj</a> & <a href="https://www.linkedin.com/in/manendra-nath-s-5b5663170" style="color: green;">Manendra</a> Team</span>
     </div>
-</body>
+
 
 <!-- Alertify JavaScript -->
 <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
@@ -295,5 +297,14 @@
 
 
 </script>
-
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#search").autocomplete({
+                source: '{% url 'room' myroom.id %}'
+          });
+        });
+    </script>
+</body>
 </html>
