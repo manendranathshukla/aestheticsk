@@ -1,5 +1,5 @@
 
-from unittest import result
+
 from django.shortcuts import render, get_object_or_404,redirect,reverse
 from django.db.models import Count,Q
 from django.core.mail import EmailMessage,EmailMultiAlternatives
@@ -21,6 +21,8 @@ from django.template import RequestContext
 
 def custom_page_not_found_view(request, exception):
     return render(request, "pageNotFound.html", {})
+def custom_internal_server_error_view(request, *args, **argv):
+    return render(request, "500.html", status=500)
 
 def home(request):
     if 'term' in request.GET:
